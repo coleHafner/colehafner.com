@@ -599,3 +599,27 @@ Page - Portfolio
 	float:left;
 	background-image:url( '/images/port_control_grid_dark.png' );
 }
+
+/******************************************************************************************************************************************
+Page - Construction
+******************************************************************************************************************************************/
+.construction_container {
+	position:relative;
+	width:280px;
+	height:130px;
+	margin:auto;
+	margin-top:90px;
+}
+
+.construction_inner {
+	postion:relative;
+	width:100%;
+	height:130px;
+}
+
+.construction_text {
+	position:relative;
+	width:100%;
+	height:20px;
+	padding-top:55px;
+}

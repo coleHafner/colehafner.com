@@ -856,6 +856,19 @@ class Common {
 				 );
 				break;
 				
+			case "construction-message":
+				$return = array( 'html' => '
+					<div class="construction_container box_shadow bg_dark padder_10">
+						<div class="construction_inner bg_white center">
+							<div class="construction_text center">
+								Under Construction...
+							</div>
+						</div>
+					</div>
+					'
+				);
+				break;
+				
 			default:
 				throw new exception( "Error: Invalid HTML command." );
 				break;
@@ -939,6 +952,12 @@ class Common {
 		return ( $row[0] == 1 ) ? ucfirst( strtolower( $get['v'] ) ) : "Index";
 		
 	}//validateView()
+	
+	public static function constructionEnvironments()
+	{
+		return array( 'live' );
+		
+	}//constructionEnvironments()
 	
 	/**
 	 * Allows access to this classes member variables.

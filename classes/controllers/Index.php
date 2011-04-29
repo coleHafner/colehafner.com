@@ -31,7 +31,16 @@ class Index extends Controller{
 	public function setContent() 
 	{
 		$this->m_controller_vars['sub'] = $this->validateCurrentView();
-		$content = $this->getHtml( $this->m_controller_vars['sub'], array() );
+		
+		
+		if( in_array( $this->m_common->m_env, Common::constructionEnvironments() ) )
+		{
+			$content = Common::getHtml( "construction-message", array() ); 
+		}
+		else
+		{
+			$content = $this->getHtml( $this->m_controller_vars['sub'], array() );
+		}
 		
 		//grab home article
 		$this->m_content = '

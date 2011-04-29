@@ -110,17 +110,18 @@ class Layout
 		$paths = $this->m_common->getPathInfo();
 		$nav_items = Index::getNavItems();
 		
-		$return .= '
-		<body>
-		
-		<!--wrapper-->
-		<div class="page">
-		
-			<!--header section-->
-			<div class="header_section bg_dark">
-				<div class="container_12">
-					<div class="grid_12 header_grid">
-					
+		if( in_array( $this->m_common->m_env, Common::constructionEnvironments() ) )
+		{
+			$header_class = '';
+			$header_content = '';
+			$header_stripe = '';
+		}
+		else
+		{
+			$header_class = 'class="header_section bg_dark"';
+			$header_stripe = '<div class="logo_stripe"></div>';
+			
+			$header_content = '
 						<div class="logo_container logo_box_shadow">
 							<div class="overlay">
 								<div class="logo_ne"></div>
@@ -137,7 +138,7 @@ class Layout
 		{
 			$selected = ( $nav['cmd'] == "about" ) ? 'nav_selector_active' : '';
 			
-			$return .= '
+			$header_content .= '
 									<td class="' . $nav['cmd'] . '" process="' . $nav['cmd'] . '" slide_num="' . ( $i + 1 ) . '">
 										<div class="nav_selector ' . $selected . '" id="nav_selector_' . $nav['cmd'] . '"></div>
 										<div class="nav_selector_hover" id="nav_selector_hover_' . $nav['cmd'] . '"></div>
@@ -146,15 +147,29 @@ class Layout
 									';
 		}
 		
-		$return .= '
+		$header_content .= '
 								</tr>
 							</table>
 						</div>
-						
+						';
+		}
+		
+		
+		$return .= '
+		<body>
+		
+		<!--wrapper-->
+		<div class="page">
+		
+			<!--header section-->
+			<div ' . $header_class . '>
+				<div class="container_12">
+					<div class="grid_12 header_grid">
+						' . $header_content . '
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div class="logo_stripe"></div>
+				' . $header_stripe . '
 			</div>
 			<!--/header section-->
 			
@@ -175,6 +190,19 @@ class Layout
 	 */
 	public function getHtmlFooterSection()
 	{
+		if( in_array( $this->m_common->m_env, Common::constructionEnvironments() ) )
+		{
+			$footer_content = '';
+		}
+		else 
+		{
+			$footer_content = '
+			<div class="padder_5_top center">
+				Social Icons Here
+			</div>
+			';
+		}
+		
 		$return = '
 				
 				</div>
@@ -188,9 +216,7 @@ class Layout
 		<div class="footer_section bg_tan">
 			<div class="container_12">
 				<div class="grid_12">
-					<div class="padder_5_top center">
-						Social Icons Here
-					</div>
+					' . $footer_content . '
 				</div>
 				<div class="clear"></div>
 			</div>
