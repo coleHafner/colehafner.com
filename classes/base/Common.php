@@ -84,8 +84,8 @@ class Common {
 			'local' => array(
 				'absolute' => "/usr/local/www/halfnerdcms.com",
 				'web' => "www",
-				'css' => "/resources/css",
-				'css_ex' => "/resources/css/extensions",
+				'css' => "../resources/css",
+				'css_ex' => "../resources/css/extensions",
 				'images' => "/resources/images",
 				'images_ex' => "/resources/images/extensions",
 				'user_images' => "/resources/images/users",
