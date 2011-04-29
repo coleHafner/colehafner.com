@@ -82,7 +82,7 @@ class Common {
 	{
 		return array(
 			'local' => array(
-				'absolute' => "/usr/local/www/halfnerdcms.com",
+				'absolute' => "/usr/local/www/colehafner.com",
 				'web' => "www",
 				'css' => "/css",
 				'css_ex' => "/css/extensions",
@@ -102,28 +102,7 @@ class Common {
 			
 			//dev server
 			'dev' => array(
-				'js' => "/js",
-				'web' => "www",
-				'css' => "/css",
-				'images' => "/images",
-				'classes' => "/classes",
-				'js_nerd' => "/js/halfnerd",
-				'js_ex' => "/js/extensions",
-				'classes_ex' => "/classes/ex",
-				'css_ex' => "/css/extensions",
-				'user_images' => "/images/users",
-				'images_ex' => "/images/extensions",
-				'classes_controllers' => "controllers",
-				'absolute' => "/home/users/web/b937/moo.halfnerdcom/cms",
-				'db_host' => "halfnerdcom.fatcowmysql.com",
-				'db_pass' => "passwd1000!",
-				'db_user' => "cms_user",
-				'db_name' => "halfnerd_cms"
-			),
-			
-			//live server
-			'live' => array(
-				'absolute' => "/usr/local/www/halfnerdcms",
+				'absolute' => "/home8/public_html/colehafner.com",
 				'web' => "www",
 				'css' => "/css",
 				'css_ex' => "/css/extensions",
@@ -136,9 +115,29 @@ class Common {
 				'classes' => "/classes",
 				'classes_ex' => "/classes/ex",
 				'db_host' => "localhost",
-				'db_name' => "cms",
-				'db_user' => "cms_user",
-				'db_pass' => "passwd1000!",
+				'db_name' => "colehafn_coh",
+				'db_user' => "colehafn_coh",
+				'db_pass' => "passwd1000!"
+			),
+			
+			//live server
+			'live' => array(
+				'absolute' => "/home8/public_html/colehafner.com",
+				'web' => "www",
+				'css' => "/css",
+				'css_ex' => "/css/extensions",
+				'images' => "/images",
+				'images_ex' => "/images/extensions",
+				'user_images' => "/images/users",
+				'js' => "/js",
+				'js_ex' => "/js/extensions",
+				'js_nerd' => "/js/halfnerd",
+				'classes' => "/classes",
+				'classes_ex' => "/classes/ex",
+				'db_host' => "localhost",
+				'db_name' => "colehafn_coh",
+				'db_user' => "colehafn_coh",
+				'db_pass' => "passwd1000!"
 			)
 		);
 		
