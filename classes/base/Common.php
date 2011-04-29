@@ -55,7 +55,7 @@ class Common {
 			
 			if( in_array( $field, $valid_fields ) )
 			{
-				if( $this->m_env == "local" )
+				if( $this->m_env == "local" && FALSE )
 				{
 					$val = ( strtolower( $field ) == "v" ) ? "_" . $val : $val;
 					$return .= "/" . strtolower( $val );
