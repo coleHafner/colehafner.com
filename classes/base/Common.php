@@ -102,7 +102,7 @@ class Common {
 			
 			//dev server
 			'dev' => array(
-				'absolute' => "/home8/public_html/colehafner.com",
+				'absolute' => "/home8/colehafn/public_html/colehafner.com",
 				'web' => "www",
 				'css' => "/css",
 				'css_ex' => "/css/extensions",
@@ -122,7 +122,7 @@ class Common {
 			
 			//live server
 			'live' => array(
-				'absolute' => "/home8/public_html/colehafner.com",
+				'absolute' => "/home8/colehafn/public_html/colehafner.com",
 				'web' => "www",
 				'css' => "/css",
 				'css_ex' => "/css/extensions",
