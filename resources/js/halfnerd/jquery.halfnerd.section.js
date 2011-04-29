@@ -68,7 +68,7 @@ $( document ).ready( function(){
 					break;
 					
 				default:
-					$.colorbox({ href:'/ajax/halfnerd_helper.php?task=section&process=' + process + '&section_id=' + section.section_id });
+					$.colorbox({ href:'/resources/ajax/halfnerd_helper.php?task=section&process=' + process + '&section_id=' + section.section_id });
 					break;
 			}//end switch
 		});
@@ -87,7 +87,7 @@ action functions
 		//add or modify article
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=section&process=add&section_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=section&process=add&section_id=0',
 			data: $( form_name ).serialize( true ),
 			success: function( section_id ){	
 			
@@ -110,7 +110,7 @@ action functions
 		//add or modify article
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=section&process=modify&section_id=' + this.section_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=section&process=modify&section_id=' + this.section_id,
 			data: $( form_name ).serialize( true ),
 			success: function( section_id ){		
 			
@@ -132,7 +132,7 @@ action functions
 	{
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=section&process=delete&section_id=' + this.section_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=section&process=delete&section_id=' + this.section_id,
 			data: "",
 			success: function( section_id ){
 				
@@ -159,7 +159,7 @@ validation functions
 		
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=section&process=validate',
+			url: '/resources/ajax/halfnerd_helper.php?task=section&process=validate',
 			data: $( form_name ).serialize( true ),
 			success: function( reply ) {		
 			
@@ -280,7 +280,7 @@ Ui functions
 	{
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=section&process=show_section_list&section_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=section&process=show_section_list&section_id=0',
 			data: {},
 			success: function( section_list ){
 				$( "#section_items_container" ).html( section_list );

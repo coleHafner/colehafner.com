@@ -12,7 +12,7 @@ $( document ).ready( function(){
 			//show loader
 			$( "#result" ).removeAttr( "style" );
 			$( "#result" ).addClass( "normal_font" )
-			$( "#result" ).html( '<img src="/images/loader_small.gif" />&nbsp;Uploading...' );
+			$( "#result" ).html( '<img src="/resources/images/loader_small.gif" />&nbsp;Uploading...' );
 			
 			//get file
 			var file = $( "#file_to_upload" ).attr( "value" );
@@ -33,7 +33,7 @@ validation functions
 	{
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=file&process=validate',
+			url: '/resources/ajax/halfnerd_helper.php?task=file&process=validate',
 			data: { file_path_and_name: file, is_image: "1" },
 			success: function( validation_result ){
 				
@@ -124,7 +124,7 @@ action functions
 		var file_checker = setInterval( function(){
 			$.ajax({
 				type:'post',
-				url:'/ajax/halfnerd_helper.php?task=file&process=confirm-upload',
+				url:'/resources/ajax/halfnerd_helper.php?task=file&process=confirm-upload',
 				data: { file_name: file_name },
 				success: function( reply ){
 					

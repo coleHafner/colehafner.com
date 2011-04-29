@@ -67,7 +67,7 @@ action functions
 		//add or modify article
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=view&process=add&view_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=add&view_id=0',
 			data: $( form_name ).serialize( true ),
 			success: function( view_id ){	
 			
@@ -86,7 +86,7 @@ action functions
 		//add or modify article
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=view&process=modify&view_id=' + this.view_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=modify&view_id=' + this.view_id,
 			data: $( form_name ).serialize( true ),
 			success: function( view_id ){		
 				
@@ -108,7 +108,7 @@ action functions
 	{
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=view&process=delete&view_id=' + this.view_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=delete&view_id=' + this.view_id,
 			data: "",
 			success: function( view_id ){
 				
@@ -129,7 +129,7 @@ action functions
 		$.ajax({
 			type:'post',
 			data: { view_priorities: list_string },
-			url: '/ajax/halfnerd_helper.php?task=view&process=reorder&view_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=reorder&view_id=0',
 			success: function( reply ){
 			
 				//show message and reload
@@ -149,7 +149,7 @@ validation functions
 		
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=view&process=validate',
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=validate',
 			data: $( form_name ).serialize( true ),
 			success: function( reply ) {		
 			
@@ -195,7 +195,7 @@ Ui functions
 	{
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=view&process=show_reorder_views&view_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=show_reorder_views&view_id=0',
 			data:{},
 			success: function( html ){
 					
@@ -215,7 +215,7 @@ Ui functions
 	{
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=view&process=show_normal_views&view_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=view&process=show_normal_views&view_id=0',
 			data:{},
 			success: function( html ){
 				

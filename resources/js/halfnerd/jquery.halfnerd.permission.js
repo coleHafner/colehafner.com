@@ -60,7 +60,7 @@ $( document ).ready( function(){
 					break;
 					
 				default:
-					$.colorbox({ href:'/ajax/halfnerd_helper.php?task=permission&process=' + process + '&permission_id=' + permission.permission_id });
+					$.colorbox({ href:'/resources/ajax/halfnerd_helper.php?task=permission&process=' + process + '&permission_id=' + permission.permission_id });
 					break;
 					
 			}//end switch
@@ -80,7 +80,7 @@ action functions
 		//add or modify article
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=permission&process=add&permission_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=permission&process=add&permission_id=0',
 			data: $( form_name ).serialize( true ),
 			success: function( permission_id ){	
 				
@@ -96,7 +96,7 @@ action functions
 		//add or modify article
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=permission&process=modify&permission_id=' + this.permission_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=permission&process=modify&permission_id=' + this.permission_id,
 			data: $( form_name ).serialize( true ),
 			success: function( permission_id ){		
 			
@@ -111,7 +111,7 @@ action functions
 	{
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=permission&process=delete&permission_id=' + this.permission_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=permission&process=delete&permission_id=' + this.permission_id,
 			data: "",
 			success: function( permission_id ){
 				
@@ -131,7 +131,7 @@ validation functions
 		
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=permission&process=validate',
+			url: '/resources/ajax/halfnerd_helper.php?task=permission&process=validate',
 			data: $( form_name ).serialize( true ),
 			success: function( reply ) {		
 				
@@ -271,7 +271,7 @@ Ui functions
 	{
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=permission&process=show_normal_views&permission_id=0',
+			url: '/resources/ajax/halfnerd_helper.php?task=permission&process=show_normal_views&permission_id=0',
 			data:{},
 			success: function( html ){
 				

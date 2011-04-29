@@ -461,7 +461,7 @@ Colors
 buttons
 ******************************************************************************************************************************************/
 .loading {
-	background-image: url( '/images/loader_small_light_tan.gif' );
+	background-image: url( '/resources/images/loader_small_light_tan.gif' );
 	background-position:center center;
 	background-repeat:no-repeat;
 }
@@ -634,7 +634,7 @@ Page
 }
 
 .page_bg {
-	background-image: url(  '/images/bg_nature.jpg' );
+	background-image: url(  '/resources/images/bg_nature.jpg' );
 	background-position:top left;
 	background-repeat:no-repeat;
 }

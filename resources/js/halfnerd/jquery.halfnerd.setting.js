@@ -54,7 +54,7 @@ action functions
 	this.add = function( form_name ) {
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=setting&process=add&setting_id=' + this.setting_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=setting&process=add&setting_id=' + this.setting_id,
 			data:$( form_name ).serialize( true ),
 			success: function( reply ){
 				
@@ -67,7 +67,7 @@ action functions
 	this.modify = function( form_name ) {
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=setting&process=modify&setting_id=' + this.setting_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=setting&process=modify&setting_id=' + this.setting_id,
 			data:$( form_name ).serialize( true ),
 			success: function(){
 				
@@ -80,7 +80,7 @@ action functions
 	this.deleteRecord = function( setting_id ) {
 		$.ajax({
 			type:'post',
-			url: '/ajax/halfnerd_helper.php?task=setting&process=delete&setting_id=' + setting_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=setting&process=delete&setting_id=' + setting_id,
 			success: function( reply ){
 				
 				//show success message
@@ -99,7 +99,7 @@ validation functions
 		
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=setting&process=validate&setting_id=' + setting_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=setting&process=validate&setting_id=' + setting_id,
 			data: $( form_name ).serialize( true ),
 			success: function( reply ) {		
 				

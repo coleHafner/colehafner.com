@@ -341,7 +341,7 @@ other functions
 
 function showLoader( element, style )
 {
-	var loader_html = '<div class="loader_div"' + style + '><img src="/images/ajax-loader.gif"/></div>';
+	var loader_html = '<div class="loader_div"' + style + '><img src="/resources/images/ajax-loader.gif"/></div>';
 	
 	$( element ).html( loader_html );
 	

@@ -1,12 +1,19 @@
-Options +FollowSymLinks
+#PHP5 Single php.ini as default
+#AddHandler application/x-httpd-php5s .php
 
 RewriteEngine on
+#Options +SymLinksIfOwnerMatch
+#RewriteBase /
+
+#RewriteCond %{REQUEST_URI} !www/ [NC]
+#RewriteRule ^(.*)$ "www\/$1" [L] 
 RewriteRule ^_([a-z]+)/([^/]+)/([^/]+)/([^/]+) ?v=$1&sub=$2&id1=$3&id2=$4 [NC]
 RewriteRule ^_([a-z]+)/([^/]+)/([^/]+) ?v=$1&sub=$2&id1=$3 [NC]
 RewriteRule ^_([a-z]+)/([^/]+) ?v=$1&sub=$2 [NC]
 RewriteRule ^_([a-z]+) ?v=$1 [NC]
 
-ErrorDocument 404	/index.php
+ErrorDocument 404       /index.php
 
 php_value include_path "./:/usr/local/lib/php:/usr/local/www/colehafner.com/classes:/usr/local/www/colehafner.com/classes/extensions"
 php_flag register_globals off
+

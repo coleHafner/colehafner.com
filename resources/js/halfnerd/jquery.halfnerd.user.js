@@ -93,7 +93,7 @@ action functions
 	{
 		$.ajax({
 			type: 'post',
-			url: "/ajax/halfnerd_helper.php?task=user&process=add&user_id=0",
+			url: "/resources/ajax/halfnerd_helper.php?task=user&process=add&user_id=0",
 			data: $( "#user_add_mod_form_0" ).serialize( true ),
 			success: function( reply ){
 				
@@ -108,7 +108,7 @@ action functions
 	{
 		$.ajax({
 			type: 'post',
-			url: "/ajax/halfnerd_helper.php?task=user&process=modify&user_id=" + this.user_id,
+			url: "/resources/ajax/halfnerd_helper.php?task=user&process=modify&user_id=" + this.user_id,
 			data: $( "#user_add_mod_form_" + user_id ).serialize( true ),
 			success: function( reply ){
 				
@@ -123,7 +123,7 @@ action functions
 	{
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=user&process=delete&user_id=' + this.user_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=user&process=delete&user_id=' + this.user_id,
 			data: $( "#user_add_mod_form_" + user_id ).serialize( true ),
 			success: function( reply ){
 				
@@ -141,7 +141,7 @@ action functions
 			//save gravatar preferences
 			$.ajax({
 				type: 'post',
-				url: '/ajax/halfnerd_helper.php?task=user&process=update_photo&user_id=' + this.user_id,
+				url: '/resources/ajax/halfnerd_helper.php?task=user&process=update_photo&user_id=' + this.user_id,
 				data: $( "#user_image_upload_form" ).serialize( true ),
 				success: function( reply ){
 					showMessage( "Photo Updated", 1, function(){ reloadPage(); } );
@@ -188,7 +188,7 @@ validation functions
 		
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=user&process=validate&user_id=' + this.user_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=user&process=validate&user_id=' + this.user_id,
 			data: $( "#user_add_mod_form_" + user_id ).serialize( true ),
 			success: function( reply ){
 				
@@ -235,7 +235,7 @@ ui functions
 	{
 		$.ajax({
 			type: 'post',
-			url: '/ajax/halfnerd_helper.php?task=user&process=refresh_user_type_selector&user_id=' + user_id,
+			url: '/resources/ajax/halfnerd_helper.php?task=user&process=refresh_user_type_selector&user_id=' + user_id,
 			data:{},
 			success: function( reply ){
 

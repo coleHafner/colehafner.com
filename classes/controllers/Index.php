@@ -257,12 +257,14 @@ class Index extends Controller{
 							<td>
 								<div class="p_slide" id="p_slide_1">
 								
-									<div class="padder_10_bottom">
-										<img src="/images/header_work.png" />
-									</div>
-										
-									<div class="padder_10_bottom">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros semper vel tristique elit feugiat.
+									<div class="port_spacer">
+										<div class="padder_10_bottom">
+											<img src="/images/header_work.png" />
+										</div>
+											
+										<div>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros semper vel tristique elit feugiat.
+										</div>
 									</div>
 									
 									<div class="port_container bg_dark box_shadow">
@@ -280,32 +282,15 @@ class Index extends Controller{
 					$html .= '
 							<td>
 								<div class="p_slide" id="p_slide_' . $slide_num . '">
-									<div class="p_header font_title">
-										' . $site['client'] . '
-									</div>
-									<div class="p_img_holder">
-										<img src="/images/site_' . $site['img'] . '_big.jpg" />
-									</div>
-									<div style="position:relative;margin-top:5px;">
-										<table style="position:relative;width:100%;">
-											<tr>
-												<td style="vertical-align:top;" class="default_line_height">
-													' . stripslashes( $site['desc'] ) . '
-												</td>
-												<td style="text-align:right;width:215px;vertical-align:middle;" class="default_line_height">
-												
-													<span style="position:relative;font-weight:bold;font-size:13px;" >
-														' . $site['skills'] . '
-													</span>
-													<br/>
-													
-													<a href="' . $site['link'] . '" target="_blank">
-														Launch Site&nbsp;&nbsp;
-													</a>
-													
-												</td>
-											</tr>
-										</table>
+								
+									<div class="port_spacer">&nbsp;</div>
+									
+									<div class="port_container bg_dark box_shadow">
+										<div class="padder_10">
+											<div class="bg_white" style="position:relative;height:100%;">
+												&nbsp;
+											</div>
+										</div>
 									</div>
 								</div>
 							</td>
@@ -316,20 +301,6 @@ class Index extends Controller{
 						</tr>
 					</table>
 				</div>
-				
-				<!--
-				<div class="p_controls">
-					<div class="padder_5" style="position:relative;width:140px;">
-						<div style="position:relative;float:left;">
-							<a href="#" class="show_slide_p" direction="back">&lt;&lt; Prev</a>
-						</div>
-						<div style="position:relative;float:right;">		
-							<a href="#" class="show_slide_p" direction="forward">Next &gt;&gt;</a>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				-->
 				';
 				
 				$return = array( 'html' => $html );

@@ -7,7 +7,7 @@ body{
 	font-family: arial, helvetica, sans-serif;
 	font-size:14px;
 	color:#000;
-	background: url( '/images/bg_stripes.png' );
+	background: url( '/resources/images/bg_stripes.png' );
 	background-repeat:repeat-x repeat-y;
 }
 
@@ -186,7 +186,7 @@ Nav and logo
 	width:175px;
 	height:132px;
 	text-align:center;
-	background: url( '/images/logo.png' ) center center no-repeat;
+	background: url( '/resources/images/logo.png' ) center center no-repeat;
 	background-color:#FF0000;
 }
 
@@ -205,12 +205,12 @@ Nav and logo
 
 .logo_ne { 
 	top:0px;
-	background: url( '/images/logo_ne.png' ) center center no-repeat; 
+	background: url( '/resources/images/logo_ne.png' ) center center no-repeat; 
 }
 
 .logo_se {
 	bottom:0px;
-	background: url( '/images/logo_se.png' ) center center no-repeat;
+	background: url( '/resources/images/logo_se.png' ) center center no-repeat;
 }
 
 .logo_stripe {
@@ -240,15 +240,15 @@ Nav and logo
 }
 
 .nav_table td.about {
-	background-image: url( '/images/nav_about.gif' );
+	background-image: url( '/resources/images/nav_about.gif' );
 }
 
 .nav_table td.portfolio {
-	background-image: url( '/images/nav_portfolio.gif' );
+	background-image: url( '/resources/images/nav_portfolio.gif' );
 }
 
 .nav_table td.contact {
-	background-image: url( '/images/nav_contact.gif' );
+	background-image: url( '/resources/images/nav_contact.gif' );
 }
 
 .nav_selector, .nav_selector_hover {
@@ -261,7 +261,7 @@ Nav and logo
 }
 
 .nav_selector_active {
-	background-image: url( '/images/nav_selector.png' );
+	background-image: url( '/resources/images/nav_selector.png' );
 }
 
 /******************************************************************************************************************************************
@@ -515,11 +515,11 @@ Page - About
 }
 
 .featured_selector_active {
-	background-image:url( '/images/featured_active.gif' ); 
+	background-image:url( '/resources/images/featured_active.gif' ); 
 }
 
 .featured_selector_inactive {
-	background-image:url( '/images/featured_inactive.gif' ); 
+	background-image:url( '/resources/images/featured_inactive.gif' ); 
 }
 
 .featured_thumb_tiny { 
@@ -570,7 +570,7 @@ Page - Portfolio
 }
 
 .port_magnify {
-	background-image:url( '/images/port_magnify.gif' );
+	background-image:url( '/resources/images/port_magnify.gif' );
 	background-position:center center;
 	background-repeat:no-repeat;
 	border:3px solid #FF0000;
@@ -587,15 +587,21 @@ Page - Portfolio
 
 .port_control_left { 
 	float:left;
-	background-image:url( '/images/port_control_left.png' );
+	background-image:url( '/resources/images/port_control_left.png' );
 }
 
 .port_control_right { 
 	float:right;
-	background-image:url( '/images/port_control_right.png' );
+	background-image:url( '/resources/images/port_control_right.png' );
 }
 
 .port_control_grid { 
 	float:left;
-	background-image:url( '/images/port_control_grid_dark.png' );
+	background-image:url( '/resources/images/port_control_grid_dark.png' );
+}
+
+.port_spacer {
+	position:relative;
+	height:63px;
+	width:100%;
 }
