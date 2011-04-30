@@ -164,6 +164,12 @@ function slideVertical( el )
 		var page = $( "#slide_v_key_" + requested_slide_string ).attr( 'name' );
 		var td_id = "nav_selector_" + page;
 		
+		//change page title
+		var delim = " - ";
+		var title_split = document.title.split( delim );
+		var page_mod = page.charAt( 0 ).toUpperCase() + page.slice( 1 );
+		document.title = page_mod + delim + title_split[1];
+		
 		//control navigation effect
 		$( ".nav_table td div.nav_selector_hover, .nav_table td div.nav_selector" ).removeClass( "nav_selector_active" );
 		$( "#" + td_id ).addClass( "nav_selector_active" );
