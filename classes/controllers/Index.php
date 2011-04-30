@@ -83,7 +83,7 @@ class Index extends Controller{
 					
 					$html .= '
 							<div class="slide">
-								<div class="padder_10">
+								<div class="padder_10_top">
 									' . $content['html'] . '
 								</div>
 							</div>
@@ -123,7 +123,6 @@ class Index extends Controller{
 				
 				<input type="hidden" id="max_slides_h" value="' . ( count( $p_entries ) + 1 ) . '" />
 				<input type="hidden" id="current_slide_h" value="1" />
-				
 				';
 				
 				//slide key
@@ -132,8 +131,7 @@ class Index extends Controller{
 					$slide_num = $i + 1;
 					
 					$html .= '
-				<input type="hidden" id="slide_v_key_' . $slide_num . '" name="' . $slide['cmd'] . '" />
-				';
+				<input type="hidden" id="slide_v_key_' . $slide_num . '" name="' . $slide['cmd'] . '" />';
 				}
 				
 				$return = array( 'html' => $html );
@@ -141,106 +139,104 @@ class Index extends Controller{
 				
 			case 'about':
 				
-				$return = array( 'html' => '
-					<div class="grid_12">
-						<div class="featured_container box_shadow bg_white">
-							<div class="padder_10">
-							
-								<div class="featured_nav_container">
-									<div class="featured_nav">
+				$html = '
+				<div>
+					<div class="featured_container box_shadow bg_white">
+						<div class="padder_10">
+						
+							<div class="featured_nav_container">
+								<div class="featured_nav">
+								
+									<div class="item bg_dark">
+										<div class="bg_tan featured_thumb_tiny"></div>
+										<div class="featured_selector featured_selector_active"></div>
+										<a href="#" class="overlay" feature_num="1"></a>
+									</div>
 									
-										<div class="item bg_dark">
-											<div class="bg_tan featured_thumb_tiny"></div>
-											<div class="featured_selector featured_selector_active"></div>
-											<a href="#" class="overlay" feature_num="1"></a>
-										</div>
-										
-										<div class="item spacer"></div>
-										
-										<div class="item bg_dark">
-											<div class="bg_tan featured_thumb_tiny"></div>
-											<div class="featured_selector featured_selector_inactive"></div>
-											<a href="#" class="overlay" feature_num="2"></a>
-										</div>
-										
-										<div class="item spacer"></div>
-											
-										<div class="item bg_dark">
-											<div class="bg_tan featured_thumb_tiny"></div>
-											<div class="featured_selector featured_selector_inactive"></div>
-											<a href="#" class="overlay" feature_num="3"></a>
-										</div>
-										
+									<div class="item spacer"></div>
+									
+									<div class="item bg_dark">
+										<div class="bg_tan featured_thumb_tiny"></div>
+										<div class="featured_selector featured_selector_inactive"></div>
+										<a href="#" class="overlay" feature_num="2"></a>
 									</div>
-								</div>
-								
-								<div class="featured_photo_container">
-									<div class="padder_10_left">
-										<div class="featured_photo_bg bg_dark">
-											<div class="featured_photo" id="photo_1">photo 1</div>
-											<div class="featured_photo hidden" id="photo_2">photo 2</div>
-											<div class="featured_photo hidden" id="photo_3">photo 3</div>
-										</div>
+									
+									<div class="item spacer"></div>
+										
+									<div class="item bg_dark">
+										<div class="bg_tan featured_thumb_tiny"></div>
+										<div class="featured_selector featured_selector_inactive"></div>
+										<a href="#" class="overlay" feature_num="3"></a>
 									</div>
+									
 								</div>
-								
-								<div class="featured_blurb_container">
-									<div class="padder_10_left">
-										<div class="featured_blurb_bg">
-											<div class="featured_blurb" id="blurb_1">blurb 1</div>
-											<div class="featured_blurb hidden" id="blurb_2">blurb 2</div>
-											<div class="featured_blurb hidden" id="blurb_3">blurb 3</div>
-										</div>
-									</div>
-								</div>
-								
-								<div class="clear"></div>
-								
 							</div>
+							
+							<div class="featured_photo_container">
+								<div class="padder_10_left">
+									<div class="featured_photo_bg bg_dark">
+										<div class="featured_photo" id="photo_1">photo 1</div>
+										<div class="featured_photo hidden" id="photo_2">photo 2</div>
+										<div class="featured_photo hidden" id="photo_3">photo 3</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="featured_blurb_container">
+								<div class="padder_10_left">
+									<div class="featured_blurb_bg">
+										<div class="featured_blurb" id="blurb_1">blurb 1</div>
+										<div class="featured_blurb hidden" id="blurb_2">blurb 2</div>
+										<div class="featured_blurb hidden" id="blurb_3">blurb 3</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="clear"></div>
+							
 						</div>
 					</div>
-					<div class="clear"></div>
-				
-					<div class="grid_12">
-						
-						<div class="about_skills">
-							<div class="padder_15_top">
-								<div class="padder_10_bottom">
-									<img src="/images/header_skills.png" />
-								</div>
-								<img src="/images/about_skills.png" />
+				</div>
+			
+				<div>
+					
+					<div class="about_skills">
+						<div class="padder_15_top">
+							<div class="padder_10_bottom">
+								<img src="/images/header_skills.png" />
+							</div>
+							<img src="/images/about_skills.png" />
+						</div>
+					</div>
+					
+					<div class="about_me">
+						<div class="padder_15_top">
+							<div class="padder_10_bottom">
+								<img src="/images/header_about.png" />
+							</div>
+							<div class="padder_10_bottom default_line_height">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
+								semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
+								id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
+								Vestibulum eu urna vitae sem aliquet ultrices. Quisque vel sem eros. Nulla ac est quis massa 
+								gravida mollis.
+							</div>
+							<div class="default_line_height">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
+								semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
+								id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
+								Vestibulum eu urna vitae sem aliquet ultrices. Quisque vel sem eros. Nulla ac est quis massa 
+								gravida mollis.
 							</div>
 						</div>
-						
-						<div class="about_me">
-							<div class="padder_15_top">
-								<div class="padder_10_bottom">
-									<img src="/images/header_about.png" />
-								</div>
-								<div class="padder_10_bottom">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-									semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-									id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-									Vestibulum eu urna vitae sem aliquet ultrices. Pellentesque ut libero in arcu consectetur 
-									tristique. Ut at venenatis ipsum. 
-								</div>
-								<div>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-									semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-									id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-									Vestibulum eu urna vitae sem aliquet ultrices. Pellentesque ut libero in arcu consectetur 
-									tristique. Ut at venenatis ipsum. 
-								</div>
-							</div>
-						</div>
-						
-						<div class="clear"></div>
-						
 					</div>
 					
 					<div class="clear"></div>
-					'
-				);
+					
+				</div>
+				';
+				
+				$return = array( 'html' => $html );
 				break;
 				
 			case 'portfolio':
@@ -291,22 +287,84 @@ class Index extends Controller{
 				{
 					$html .= '	<td>
 								<div class="p_slide" id="p_slide_' . ( $i + 1 ) . '">
+								
 									<div class="port_spacer">&nbsp;</div>
+									
 									<div class="port_container bg_dark box_shadow">
+									
 										<div class="padder_10">
+										
 											<div class="port_inner bg_white">
+											
 												<div class="padder_10">
+												
+													<table class="port_content_inner">
+														<tr>
+														
+															<td class="photo bg_tan">
+																
+															</td>
+															
+															<td class="summary">
+																<div class="port_summary_container">
+																	<div class="padder_10">
+																	
+																		<table class="port_skills">
+																					';
+					foreach( $site['features'] as $feature )
+					{
+						$html .= '
+																			<tr>
+																				<td>
+																					' . $feature . '
+																				</td>
+																			</tr>
+																			';
+					}						
+					
+					$html .= '
+																		</table>
+																		
+																		<div class="port_blurb_container bg_tan box_shadow margin_10_top">
+																			<div class="padder_10 default_line_height">
+																				' . stripslashes( $site['desc'] ) . '
+																			</div>
+																		</div>
+																		
+																		<div class="port_launch_site">
+																			<a href="' . $site['link'] . '">Launch Site &gt;&nbsp;&gt;</a>
+																		</div>
+																		
+																	</div>
+																</div>
+															</td>
+															
+														</tr>
+													</table>
+													
 													<div class="port_title bg_red box_shadow">
 														<div class="padder_10 port_title_text">
 															' . $site['client'] . '
+															
 														</div>
 														<div class="logo_ne"></div>
 													</div>
+													
 												</div>
+												<!--padder-->
+												
 											</div>
+											<!--inner-->
+											
 										</div>
+										<!--padder-->
+										
 									</div>
+									<!--container-->
+									
 								</div>
+								<!--slide-->
+								
 							</td>';
 				}
 				
@@ -314,20 +372,6 @@ class Index extends Controller{
 						</tr>
 					</table>
 				</div>
-				
-				<!--
-				<div class="p_controls">
-					<div class="padder_5" style="position:relative;width:140px;">
-						<div style="position:relative;float:left;">
-							<a href="#" class="show_slide_p" direction="back">&lt;&lt; Prev</a>
-						</div>
-						<div style="position:relative;float:right;">		
-							<a href="#" class="show_slide_p" direction="forward">Next &gt;&gt;</a>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				-->
 				';
 				
 				$return = array( 'html' => $html );
@@ -344,104 +388,107 @@ class Index extends Controller{
 				$return = array( 'html' => $html );
 				break;
 				
-			case 'lab':
-				$return = array(
-					'html' => '
-					<div class="font_title slide_header">
-						Labs
-					</div>'
-				);
-				break;
-				
 			case 'contact':
-				$return = array(
-					'html' => '
-					<div class="font_title slide_header">
-						Contact Me
-					</div>'
-				);
-				break;
-				
-			case 'blog':
-				
-				$blog_entries = array( 
-					array( 'title' => 'Welcome to Blogville. Population me.', 'content' => "this is test content" ),
-					array( 'title' => 'Blog1.', 'content' => "this is test content1" ),
-					array( 'title' => 'Blog2.', 'content' => "this is test content2" ),
-					array( 'title' => 'Blog3.', 'content' => "this is test content3" ) 
-				);
 				
 				$html = '
-				<div id="blog_holder">
-					<table class="blog_slide_table">
-						<tr>
-						';
+				<div class="con_container">
 				
-				foreach( $blog_entries as $i => $blog )
-				{
-					$slide_num = $i + 1;
+					<div class="padder_10_bottom">
+						<img src="/images/header_contact.png" />
+					</div>
 					
-					$html .= '
-							<td>
-								<div class="blog_slide" id="blog_slide_' . $slide_num . '">
-									<div class="padder_5 font_title" id="blog_title_' . $slide_num . '">
-										' . $blog['title'] . '
-									</div>
-									<div class="padder_5" id="blog_content_' . $slide_num . '">
-										' . $blog['content'] . '
-									</div>
-								</div>
-							</td>
-					';
-				}
-				
-				$html .= '
-						</tr>
-					</table>
+					<div class="padder_10_bottom default_line_height">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
+						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
+						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
+						Vestibulum eu urna vitae sem aliquet ultrices.
+					</div>
+					
+					<div class="padder_10_bottom default_line_height">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
+						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
+						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
+						Vestibulum eu urna vitae sem aliquet ultrices.
+					</div>
+					
+					<div class="padder_10_bottom default_line_height">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
+						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
+						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
+						Vestibulum eu urna vitae sem aliquet ultrices.
+					</div>
+					
+					<div class="default_line_height">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
+						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
+						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
+						Vestibulum eu urna vitae sem aliquet ultrices.
+					</div>
+					
 				</div>
 				
-				<div class="blog_controls">
-					<div class="padder_5" style="position:relative;padding-top:1px;padding-left:1px;">
-						<table class="blog_nav">
-							<tr>
-								<td>
-									<div class="rounded_corners border_solid_grey blog_search_holder">
-										<div style="position:relative;float:left;">
-											<input type="text" id="blog_search_term" style="margin-right:5px;" class="color_blue"/>
-										</div>
-										<div id="blog_search_button">
-											Search
-										</div>
-										<div class="clear"></div>
+				<div class="con_spacer">
+					&nbsp;
+				</div>
+				
+				<div class="con_container bg_tan box_shadow">
+					<div class="padder_15">
+						<form name="contact_form" id="contact_form">
+						
+							<div class="padder_20_top">
+								<span class="title_span con_label">
+									Email:
+								</span>
+								<input type="text" class="text_input con_input" />
+							</div>
+							
+							<table class="con_selector_split padder_25_top">
+								<tr>
+								
+									<td class="selector">
+										<span class="title_span con_label">
+											Inquiry:
+										</span>
+										<select style="width:100%;">
+											<option value="0">Site Request</option>
+										</select>
+									</td>
+									
+									<td class="spacer">&nbsp;</td>
+									
+									<td class="selector">
+										<span class="title_span con_label">
+											Budget:
+										</span>
+										<select style="width:100%;">
+											<option value="0">$1000</option>
+										</select>
+									</td>
+									
+								</tr>
+							</table>
+							
+							<div class="padder_25_top">
+								<span class="title_span con_label">
+									Message:
+								</span>
+								<textarea class="con_textarea"></textarea>
+							</div>
+							
+							<div class="padder_10_top padder_5_right">
+								<div class="con_button bg_red center">
+									<div class="padder_10_top">
+										Send
 									</div>
-								</td>
-								';
-				
-				foreach( $blog_entries as $i => $blog )
-				{
-					$slide_num = $i + 1;
-					$title = ( $slide_num == 1 ) ? "Home" : $slide_num;
-					$selected = ( $slide_num == 1 ) ? 'selected_blog' : '';
-					
-					$html .= '
-								<td>
-									<a id="blog_control_' . $slide_num . '" class="show_slide_blog rounded_corners border_solid_grey ' . $selected . '" href="#" slide_num="' . $slide_num . '">' . $title . '</a>
-								</td>
-							';
-				}
-				
-				$html .= '
-							</tr>
-						</table>
-						
-						<!--
-						<div class="blog_controls_tab padder_5_top center">
-							<a href="#" class="font_small">X</a>
-						</div>
-						-->
-						
+									<a href="#" class="overlay_absolute"></a>
+								</div>
+							</div>
+							
+						</form>
 					</div>
 				</div>
+				
+				<div class="clear"></div>
 				';
 				
 				$return = array( 'html' => $html );
@@ -465,7 +512,7 @@ class Index extends Controller{
 				'client' => "Bottom Time Scuba", 
 				'type' => "Business", 
 				'link' => 'http://bottomtimescuba.org', 
-				'skills' => "HTML, CSS, MYSQL, PHP", 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ), 
 				'desc' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. " 
 			),
 			
@@ -474,7 +521,7 @@ class Index extends Controller{
 				'client' => "Madness Entertainment", 
 				'type' => "Portfolio", 
 				'link' => 'http://madnessentertainment.com', 
-				'skills' => "HTML, CSS, MYSQL, PHP, jQuery", 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
 				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account." 
 			),
 			
@@ -483,7 +530,7 @@ class Index extends Controller{
 				'client' => "Rebekah Hill Photography", 
 				'type' => "Portfolio", 
 				'link' => 'http://pbr.halfnerddesigns.com', 
-				'skills' => "HTML, CSS, MYSQL, PHP, jQuery", 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
 				'desc' => "This site is still in production. It was made for my photographer friend and integrates with Google\'s Picasa API so the client can manage their photos via her Picasa account." 
 			),
 			
@@ -492,7 +539,7 @@ class Index extends Controller{
 				'client' => "Simple Bicycle Co.", 
 				'type' => "Business", 
 				'link' => 'http://simplebicycleco.com', 
-				'skills' => "HTML, CSS, MYSQL, PHP, jQuery", 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
 				'desc' => "This site is for a custom frame maker in Washington. It was built on my framework and customized to give my client complete control of the site\'s content." 
 			),
 			
@@ -501,7 +548,7 @@ class Index extends Controller{
 				'client' => "Cole and Heather", 
 				'type' => "Event", 
 				'link' => 'http://coleandheather.com', 
-				'skills' => "HTML, CSS, MYSQL, PHP, JS", 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
 				'desc' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding." 
 			)
 		);

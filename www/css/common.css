@@ -108,13 +108,37 @@ padding, colors, borders
 .padder_10_bottom { padding-bottom:10px; }
 .padder_10_left{ padding-left:10px; }
 
+.padder_15 { padding:15px; }
 .padder_15_top{ padding-top:15px; }
 .padder_15_left{ padding-left:15px; }
+
+.padder_20 { padding:20px; }
+.padder_20_top { padding-top:20px; }
+.padder_20_right { padding-right:20px; }
+.padder_20_bottom { padding-bottom:20px; }
+.padder_20_left { padding-left:20px; }
+
+.padder_25 { padding:25px; }
+.padder_25_top { padding-top:25px; }
+.padder_25_right { padding-right:25px; }
+.padder_25_bottom { padding-bottom:25px; }
+.padder_25_left { padding-left:25px; }
+
+.padder_30 { padding:30px; }
+.padder_30_top { padding-top:30px; }
+.padder_30_right { padding-right:30px; }
+.padder_30_bottom { padding-bottom:30px; }
+.padder_30_left { padding-left:30px; }
 
 .padder_no_top { padding-top:0; }
 .padder_no_right { padding-right:0; }
 .padder_no_bottom { padding-bottom:0; }
 .padder_no_left { padding-left:0; }
+
+.margin_10_top { margin-top:10px; }
+.margin_10_right { margin-right:10px; }
+.margin_10_bottom { margin-bottom:10px; }
+.margin_10_left { margin-left:10px; }
 
 .font_title { font-weight:bold; font-size:16px; }
 .font_small { font-size:10px; font-weight:bold; }
@@ -146,14 +170,32 @@ padding, colors, borders
 	box-shadow:2px 2px 5px #888;
 }
 
-.overlay {
+.overlay, .overlay_absolute {
 	position:relative;
 	display:block;
 	width:100%;
 	height:100%;
 }
 
-.thumb_tiny { position:relative; }
+.overlay_absolute {
+	position:absolute !important;
+	top:0px;
+	left:0px;
+}
+
+.title_span {
+	position:relative;
+	display:block;
+	padding-bottom:3px;
+}
+
+.text_input {
+	height:30px;
+}
+
+.text_long {
+	width:100%;
+}
 
 /******************************************************************************************************************************************
 Widget
@@ -174,6 +216,11 @@ Widget
 	z-index:101;
 	overflow:hidden;
 	float:left;
+}
+
+.p_slide {
+	width:940px;
+	margin-right:10px;
 }
 
 /******************************************************************************************************************************************
@@ -265,198 +312,27 @@ Nav and logo
 }
 
 /******************************************************************************************************************************************
-Vertical Slides
+Page - Construction
 ******************************************************************************************************************************************/
-
-.slide_header {
-	margin-bottom:10px;
-}
-
-.slide_controls {
+.construction_container {
 	position:relative;
-	width:190px;
-	float:right;
+	width:280px;
+	height:130px;
+	margin:auto;
+	margin-top:90px;
 }
 
-.slide_controls li {
+.construction_inner {
+	postion:relative;
+	width:100%;
+	height:130px;
+}
+
+.construction_text {
 	position:relative;
 	width:100%;
-	margin-top:5px;
-	margin-bottom:5px;
-	padding:7px 0 7px 10px;
-}
-
-.slide_controls li a {
-	display:block;
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:100%;
-	z-index:100;
-}
-
-.slide_controls li:hover, .slide_controls li.selected {
-	background-color:#FFF;
-	-moz-box-shadow:2px 0px 5px #888;
-	-webkit-box-shadow:2px 0px 5px #888;
-	box-shadow:-2px 1px 7px #888;
-	-moz-border-radius:.25em 0 0 .25em;
-	-webkit-border-radius:.25em 0 0 .25em;
-	border-radius:.25em 0 0 .25em;
-}
-
-.nav_item_icon_holder, .nav_item_desc_holder {
-	position:relative;
-	float:left;
-}
-
-.nav_item_icon_holder {
-	width:55px;	
-}
-
-.nav_item_desc_holder {
-	width:130px;
-}
-
-.nav_item_icon {
-	position:relative;
-	width:45px;
-	height:45px;
-	border:1px solid #000;
-	-moz-box-shadow:2px 2px 2px #888;
-	-webkit-box-shadow:2px 2px 2px #888;
-	box-shadow:2px 2px 2px #888;
-	-moz-border-radius:3.25em;
-	-webkit-border-radius:3.25em;
-	border-radius:3.25em;
-}
-
-/******************************************************************************************************************************************
-Horizontal slides
-******************************************************************************************************************************************/
-
-#blog_search_term {
-	position:relative;
-	width:150px;
 	height:20px;
-	font-size:14px;
-	border-style:hidden;
-}
-
-#blog_search_button {
-	position:relative;
-	float:left;
-	border-left:1px solid #999;
-	height:22px;
-	padding-left:5px;
-	padding-right:5px;
-	line-height:22px;
-	vertical-align:middle;
-}
-
-#blog_search_button:hover {
-	cursor:pointer;
-	cursor:hand;
-	background-color:#00CCFF;
-}
-
-.blog_search_holder {
-	position:relative;
-	height:22px;
-	background-color:#FFF;
-	margin-right:7px;
-}
-
-.blog_slide, .blog_controls, .p_slide {
-	width:930px;
-}
-
-.blog_slide, .p_slide {
-	margin-right:10px;
-}
-
-.blog_slide_table {
-	position:relative;
-	border-collapse:collapse;
-}
-
-.blog_controls, .blog_controls_tab, .p_controls {
-	position:absolute;
-	border:1px solid #999;
-	/*background-color:#EAEAEA;*/
-	border-bottom:0;
-}
-
-.blog_controls, .p_controls {
-	bottom:0px;
-	left:10px;
-	z-index:100;
-	height:32px;
-	-moz-border-radius:.5em .5em 0 0;
-	-webkit-border-radius:.5em .5em 0 0;
-	border-radius:.5em .5em 0 0;
-}
-
-.p_controls {
-	height:25px !important;
-}
-
-.p_img_holder {
-	position:relative;
-	padding:10px;
-	margin-top:5px;
-	background-color:#EAEAEA;
-	border:1px solid #999;
-}
-
-.p_img_holder img {
-	position:relative;
-	width:690px;
-}
-
-.p_holder {
-	position:relative;
-	margin-top:12px;
-}
-
-.blog_controls_tab {
-	top:-20px;
-	right:-1px;
-	width:30px;
-	height:14px;
-	-moz-border-radius:.25em .25em 0 0;
-	-webkit-border-radius:.25em .25em 0 0;
-	border-radius:.25em .25em 0 0;
-	z-index:101;
-}
-
-.blog_nav {
-	position:relative;
-}
-
-.blog_nav td {
-	vertical-align:center;	
-}
-
-.blog_nav td a, .blog_nav td a#blog_search_button {
-	display:block;
-	padding:3px 10px 3px 10px;
-	background-color:#FFF;
-}
-
-.blog_nav td a:hover, .blog_nav td a#blog_search_button:hover  {
-	text-decoration:none;
-	background-color:#00CCFF;	
-}
-
-.blog_nav td a.selected_blog {
-	background-color:#00CCFF;
-	color:#000;	
-}
-
-.blog_nav td a#blog_search_button {
-	color:#000;	
+	padding-top:55px;
 }
 
 /******************************************************************************************************************************************
@@ -622,26 +498,100 @@ Page - Portfolio
 	font-weight:bold;
 }
 
+.port_content_inner {
+	position:relative;
+	width:100%;
+	height:350px;
+}
+
+.port_content_inner td.photo {
+	width:75%;
+}
+
+.port_content_inner td.summary {
+	width:25%;
+}
+
+.port_summary_container  {
+	position:relative;
+	width:100%;
+	height:345px;
+}
+
+.port_skills {
+	position:relative;
+	width:100%;
+}
+
+.port_skills td {
+	height:35px;
+	vertical-align:middle;
+	background-image:url( '/images/port_checkbox_green.png' );
+	background-repeat:no-repeat;
+	background-position:left left;
+	padding-left:30px;
+}
+
+.port_blurb_container {
+	position:relative;
+	width:100%;
+	min-height:160px;
+}
+
+.port_launch_site {
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+
 /******************************************************************************************************************************************
-Page - Construction
+Page - Contact
 ******************************************************************************************************************************************/
-.construction_container {
+
+.con_container, .con_spacer {
 	position:relative;
-	width:280px;
-	height:130px;
-	margin:auto;
-	margin-top:90px;
+	float:left;
+	height:470px;
 }
 
-.construction_inner {
-	postion:relative;
-	width:100%;
-	height:130px;
+.con_container {
+	width:49%;
 }
 
-.construction_text {
+.con_spacer {
+	width:2%;
+}
+
+.con_input, .con_textarea {
+	width:425px;
+}
+
+.con_textarea {
+	height:200px;
+}
+
+.con_label {
+	font-weight:bold;
+}
+
+.con_selector_split {
 	position:relative;
 	width:100%;
-	height:20px;
-	padding-top:55px;
+}
+
+.con_selector_split td.selector {
+	width:46%;
+}
+
+.con_selector_split td.spacer {
+	width:8%;
+}
+
+.con_button {
+	position:relative;
+	width:110px;
+	height:37px;
+	color:#FFF;
+	float:right;
+	font-weight:bold;
 }
