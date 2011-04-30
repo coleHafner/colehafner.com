@@ -550,8 +550,6 @@ Page - Portfolio
 .port_grid {
 	position:relative;
 	width:100%;
-	height:370px;
-	background-color:#FFF;
 }
 
 .port_grid_item_container {
@@ -559,6 +557,7 @@ Page - Portfolio
 	width:275px;
 	height:155px;
 	margin:auto;
+	margin-bottom:18px;
 }
 
 .port_controls {
@@ -598,6 +597,18 @@ Page - Portfolio
 .port_control_grid { 
 	float:left;
 	background-image:url( '/images/port_control_grid_dark.png' );
+}
+
+.port_spacer {
+	position:relative;
+	width:100%;
+	height:63px;
+}
+
+.port_inner {
+	position:relative;
+	height:370px;
+	width:100%;
 }
 
 /******************************************************************************************************************************************
