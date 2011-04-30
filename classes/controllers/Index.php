@@ -294,7 +294,16 @@ class Index extends Controller{
 									<div class="port_spacer">&nbsp;</div>
 									<div class="port_container bg_dark box_shadow">
 										<div class="padder_10">
-											<div class="port_inner bg_white">&nbsp;</div>
+											<div class="port_inner bg_white">
+												<div class="padder_10">
+													<div class="port_title bg_red box_shadow">
+														<div class="padder_10 port_title_text">
+															' . $site['client'] . '
+														</div>
+														<div class="logo_ne"></div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
