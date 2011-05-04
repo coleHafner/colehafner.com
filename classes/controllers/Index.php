@@ -148,7 +148,7 @@ class Index extends Controller{
 								<div class="featured_nav">
 								
 									<div class="item bg_dark">
-										<div class="bg_tan featured_thumb_tiny"></div>
+										<div class="featured_thumb_tiny bg_white"><img src="/images/site_bts_thumb.jpg" /></div>
 										<div class="featured_selector featured_selector_active"></div>
 										<a href="#" class="overlay" feature_num="1"></a>
 									</div>
@@ -156,7 +156,7 @@ class Index extends Controller{
 									<div class="item spacer"></div>
 									
 									<div class="item bg_dark">
-										<div class="bg_tan featured_thumb_tiny"></div>
+										<div class="featured_thumb_tiny bg_white"><img src="/images/site_cah_thumb.jpg" /></div>
 										<div class="featured_selector featured_selector_inactive"></div>
 										<a href="#" class="overlay" feature_num="2"></a>
 									</div>
@@ -164,7 +164,7 @@ class Index extends Controller{
 									<div class="item spacer"></div>
 										
 									<div class="item bg_dark">
-										<div class="bg_tan featured_thumb_tiny"></div>
+										<div class="featured_thumb_tiny bg_white"><img src="/images/site_sbc_thumb.jpg" /></div>
 										<div class="featured_selector featured_selector_inactive"></div>
 										<a href="#" class="overlay" feature_num="3"></a>
 									</div>
@@ -175,9 +175,9 @@ class Index extends Controller{
 							<div class="featured_photo_container">
 								<div class="padder_10_left">
 									<div class="featured_photo_bg bg_dark">
-										<div class="featured_photo" id="photo_1">photo 1</div>
-										<div class="featured_photo hidden" id="photo_2">photo 2</div>
-										<div class="featured_photo hidden" id="photo_3">photo 3</div>
+										<div class="featured_photo" id="photo_1"><img src="/images/site_bts_mid.jpg" /></div>
+										<div class="featured_photo" style="display:none;" id="photo_2"><img src="/images/site_cah_mid.jpg" /></div>
+										<div class="featured_photo" style="display:none;" id="photo_3"><img src="/images/site_sbc_mid.jpg" /></div>
 									</div>
 								</div>
 							</div>
@@ -186,8 +186,8 @@ class Index extends Controller{
 								<div class="padder_10_left">
 									<div class="featured_blurb_bg">
 										<div class="featured_blurb" id="blurb_1">blurb 1</div>
-										<div class="featured_blurb hidden" id="blurb_2">blurb 2</div>
-										<div class="featured_blurb hidden" id="blurb_3">blurb 3</div>
+										<div class="featured_blurb" style="display:none;" id="blurb_2">blurb 2</div>
+										<div class="featured_blurb" style="display:none;" id="blurb_3">blurb 3</div>
 									</div>
 								</div>
 							</div>
@@ -302,7 +302,7 @@ class Index extends Controller{
 														<tr>
 														
 															<td class="photo bg_tan">
-																
+																<img src="/images/site_' . $site['img'] . '_large.jpg" />
 															</td>
 															
 															<td class="summary">
