@@ -1,7 +1,8 @@
 $( document ).ready( function() {
 	
-	
-	//hotkeys
+/*----------------------------------------------------------------------------------------------------------
+hotkeys
+----------------------------------------------------------------------------------------------------------*/
 	$(document).bind('keydown', 'up', function(){
 		
 		var slide_obj = new Object();
@@ -37,7 +38,9 @@ $( document ).ready( function() {
 		slideHorizontal( slide_obj ); 
 	});
 	
-	//element functions
+/*----------------------------------------------------------------------------------------------------------
+element functions
+----------------------------------------------------------------------------------------------------------*/
 	$( ".nav_table td a.overlay" )
 		.click( function(){ 
 			$( this ).blur(); 
@@ -79,8 +82,9 @@ $( document ).ready( function() {
 			$( this ).parent().find( "div.featured_selector" ).removeClass( "featured_selector_inactive" ).addClass( "featured_selector_active" );
 			
 			//toggle photos
+			var reveal = "#photo_" + feature_num;
 			$( ".featured_photo" ).hide();
-			$( "#photo_" + feature_num ).fadeIn( 2000 );
+			$( reveal ).fadeIn( 2000 );
 			
 			//toggle blurbs
 			$( ".featured_blurb" ).hide();
