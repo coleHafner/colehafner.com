@@ -356,6 +356,12 @@ Page - About
 	height:229px;
 }
 
+.featured_photo_bg img {
+	position:absolute;
+	top:8px;
+	left:8px;
+}
+
 .featured_photo, .featured_blurb {
 	position:relative;
 }
@@ -401,9 +407,15 @@ Page - About
 .featured_thumb_tiny { 
 	position:absolute;
 	top:5px;
-	right:4px;
+	right:5px;
 	height:63px;
-	width:86px;
+	width:96px;
+}
+
+.featured_thumb_tiny img {
+	position:relative;
+	top:5px;
+	left:5px;
 }
 
 .about_skills, .about_me {
@@ -494,7 +506,7 @@ Page - Portfolio
 }
 
 .port_title_text {
-	color:#000000;
+	color:#FFF;
 	font-weight:bold;
 }
 
@@ -506,6 +518,12 @@ Page - Portfolio
 
 .port_content_inner td.photo {
 	width:75%;
+}
+
+.port_content_inner td.photo img {
+	position:relative;
+	top:0px;
+	left:5px;
 }
 
 .port_content_inner td.summary {
