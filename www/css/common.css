@@ -448,10 +448,16 @@ Page - Portfolio
 	margin-bottom:18px;
 }
 
+.port_grid_item_container img {
+	position:absolute;
+	top:5px;
+	left:5px;
+}
+
 .port_controls {
 	position:absolute;
 	top:230px;
-	left:-65px;
+	left:-70px;
 	width:1070px;
 	height:80px;
 }
@@ -461,7 +467,6 @@ Page - Portfolio
 	background-position:center center;
 	background-repeat:no-repeat;
 	border:3px solid #FF0000;
-	top:-18px;
 }
 
 .port_control_left, .port_control_right, .port_control_grid {

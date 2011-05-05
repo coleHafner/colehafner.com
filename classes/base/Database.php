@@ -103,6 +103,9 @@ class Database {
 		$return = mysql_query( $sql, $this->m_resource );
 		
 		if( !$return ) {
+			
+			echo $sql . "\n<br/>";
+			
 			throw new Exception( 
 				"Error: Query failed @ file '" . $file . "' on line #" . $line . ". <br/>\n
 				Mysql said: '" . mysql_error() . "'" 

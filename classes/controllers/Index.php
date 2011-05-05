@@ -139,6 +139,9 @@ class Index extends Controller{
 				
 			case 'about':
 				
+				$counter = 1;
+				$sites = $this->getPortfolioEntries();
+				
 				$html = '
 				<div>
 					<div class="featured_container box_shadow bg_white">
@@ -146,28 +149,29 @@ class Index extends Controller{
 						
 							<div class="featured_nav_container">
 								<div class="featured_nav">
-								
+								';
+				foreach( $sites as $site )
+				{
+					if( $site['featured'] === TRUE )
+					{ 
+						$spacer = ( $counter == 3 ) ? '' : '<div class="item spacer"></div>';
+						$selector = ( $counter != 1 ) ? ' featured_selector_inactive' : ' featured_selector_active'; 
+					
+						$html .= '
 									<div class="item bg_dark">
-										<div class="featured_thumb_tiny bg_white"><img src="/images/site_bts_thumb.jpg" /></div>
-										<div class="featured_selector featured_selector_active"></div>
-										<a href="#" class="overlay" feature_num="1"></a>
+										<div class="featured_thumb_tiny bg_white"><img src="/images/site_' . $site['img'] . '_thumb.jpg" /></div>
+										<div class="featured_selector' . $selector . '"></div>
+										<a href="#" class="overlay" feature_num="' . $counter . '"></a>
 									</div>
-									
-									<div class="item spacer"></div>
-									
-									<div class="item bg_dark">
-										<div class="featured_thumb_tiny bg_white"><img src="/images/site_cah_thumb.jpg" /></div>
-										<div class="featured_selector featured_selector_inactive"></div>
-										<a href="#" class="overlay" feature_num="2"></a>
-									</div>
-									
-									<div class="item spacer"></div>
-										
-									<div class="item bg_dark">
-										<div class="featured_thumb_tiny bg_white"><img src="/images/site_sbc_thumb.jpg" /></div>
-										<div class="featured_selector featured_selector_inactive"></div>
-										<a href="#" class="overlay" feature_num="3"></a>
-									</div>
+									' . $spacer;
+						
+						$counter++;
+						
+					}//if featured
+					
+				}//loop through sites
+				
+				$html .= '
 									
 								</div>
 							</div>
@@ -175,9 +179,27 @@ class Index extends Controller{
 							<div class="featured_photo_container">
 								<div class="padder_10_left">
 									<div class="featured_photo_bg bg_dark">
-										<div class="featured_photo" id="photo_1"><img src="/images/site_bts_mid.jpg" /></div>
-										<div class="featured_photo" style="display:none;" id="photo_2"><img src="/images/site_cah_mid.jpg" /></div>
-										<div class="featured_photo" style="display:none;" id="photo_3"><img src="/images/site_sbc_mid.jpg" /></div>
+									';
+					
+				//reset counter
+				$counter = 1;
+				
+				foreach( $sites as $site )
+				{
+					if( $site['featured'] === TRUE )
+					{ 
+						$display = ( $counter == 1 ) ? '' : ' style="display:none;"';
+					
+						$html .= '
+										<div class="featured_photo" id="photo_' . $counter . '"' . $display . '><img src="/images/site_' . $site['img'] . '_mid.jpg" /></div>
+										';
+						$counter++;
+						
+					}//if featured
+					
+				}//loop through sites
+				
+				$html .= '
 									</div>
 								</div>
 							</div>
@@ -185,9 +207,36 @@ class Index extends Controller{
 							<div class="featured_blurb_container">
 								<div class="padder_10_left">
 									<div class="featured_blurb_bg">
-										<div class="featured_blurb" id="blurb_1">blurb 1</div>
-										<div class="featured_blurb" style="display:none;" id="blurb_2">blurb 2</div>
-										<div class="featured_blurb" style="display:none;" id="blurb_3">blurb 3</div>
+									';
+				
+				//reset counter
+				$counter = 1;
+				
+				foreach( $sites as $site )
+				{
+					if( $site['featured'] === TRUE )
+					{ 
+						$display = ( $counter == 1 ) ? '' : ' style="display:none;"';
+					
+						$html .= '
+										<div class="featured_blurb" id="blurb_' . $counter . '" ' . $display . '>
+											<div class="padder_10_bottom">
+												<b>' . $site['client'] . '</b>
+											</div>
+											
+											<div class="default_line_height">
+												' . stripslashes( $site['desc'] ) . '
+											</div>
+										</div>
+										';
+						
+						$counter++;
+						
+					}//if featured
+					
+				}//loop through sites
+				
+				$html .= '
 									</div>
 								</div>
 							</div>
@@ -208,26 +257,30 @@ class Index extends Controller{
 							<img src="/images/about_skills.png" />
 						</div>
 					</div>
-					
+				
 					<div class="about_me">
 						<div class="padder_15_top">
 							<div class="padder_10_bottom">
 								<img src="/images/header_about.png" />
 							</div>
-							<div class="padder_10_bottom default_line_height">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-								semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-								id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-								Vestibulum eu urna vitae sem aliquet ultrices. Quisque vel sem eros. Nulla ac est quis massa 
-								gravida mollis.
-							</div>
-							<div class="default_line_height">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-								semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-								id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-								Vestibulum eu urna vitae sem aliquet ultrices. Quisque vel sem eros. Nulla ac est quis massa 
-								gravida mollis.
-							</div>
+							';
+				
+				//grab content
+				$ab_art = Article::getArticleFromTags( "index", "about_me_blurb" );
+				
+				if( $ab_art !== FALSE )
+				{
+					$a_vars = array( 
+						'paragraphs' => $ab_art[0]->splitBody(), 
+						'open_tag' => '<div class="padder_10_bottom default_line_height">',
+						'close_tag' => '</div>' 
+					);
+					
+					$p_text = Article::getHtml( "pretty-article", $a_vars );
+					$html .= $p_text['html'];
+				}
+				
+				$html .= '
 						</div>
 					</div>
 					
@@ -267,7 +320,16 @@ class Index extends Controller{
 										</div>
 										
 										<div>
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros semper vel tristique elit feugiat.
+										';
+				$p_art = Article::getArticleFromTags( "index", "portfolio_blurb" );
+				
+				if( $p_art !== FALSE )
+				{
+					$html .= $p_art[0]->m_body;
+				}
+				
+				$html .= '
+											 
 										</div>
 									</div>
 									
@@ -378,9 +440,12 @@ class Index extends Controller{
 				break;
 				
 			case "portfolio-grid-item":
+				
+				$r = $vars['active_record'];
+				
 				$html = '
 				<div class="port_grid_item_container bg_tan box_shadow">
-					&nbsp;
+					<img src="/images/site_' . $r['img'] . '_thumb_mid.jpg" />
 					<a href="#" class="overlay bg_white opacity_50 show_slide_p port_magnify" slide_num="' . ( $vars['item_num'] + 1 ) . '" style="display:none;"></a>
 				</div>
 				';
@@ -396,35 +461,23 @@ class Index extends Controller{
 					<div class="padder_10_bottom">
 						<img src="/images/header_contact.png" />
 					</div>
+					';
+				
+				$c_art = Article::getArticleFromTags( "index", "contact_blurb" );
+				
+				if( $c_art !== FALSE )
+				{
+					$a_vars = array( 
+						'paragraphs' => $c_art[0]->splitBody(), 
+						'open_tag' => '<div class="padder_10_bottom default_line_height">',
+						'close_tag' => '</div>' 
+					);
 					
-					<div class="padder_10_bottom default_line_height">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-						Vestibulum eu urna vitae sem aliquet ultrices.
-					</div>
-					
-					<div class="padder_10_bottom default_line_height">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-						Vestibulum eu urna vitae sem aliquet ultrices.
-					</div>
-					
-					<div class="padder_10_bottom default_line_height">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-						Vestibulum eu urna vitae sem aliquet ultrices.
-					</div>
-					
-					<div class="default_line_height">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper sem id eros 
-						semper vel tristique elit feugiat. Suspendisse potenti. Aliquam erat volutpat. Ut et sapien 
-						id ipsum posuere hendrerit. Quisque vel sem eros. Nulla ac est quis massa gravida mollis. 
-						Vestibulum eu urna vitae sem aliquet ultrices.
-					</div>
-					
+					$p_text = Article::getHtml( "pretty-article", $a_vars );
+					$html .= $p_text['html'];
+				}
+				
+				$html .= '
 				</div>
 				
 				<div class="con_spacer">
@@ -505,7 +558,7 @@ class Index extends Controller{
 	
 	public function getPortfolioEntries()
 	{
-		return array(
+		$return = array(
 		
 			array( 
 				'img' => 'bts', 
@@ -513,7 +566,8 @@ class Index extends Controller{
 				'type' => "Business", 
 				'link' => 'http://bottomtimescuba.org', 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ), 
-				'desc' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. " 
+				'desc' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. ",
+				'featured' => FALSE 
 			),
 			
 			array( 
@@ -522,7 +576,8 @@ class Index extends Controller{
 				'type' => "Portfolio", 
 				'link' => 'http://madnessentertainment.com', 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account." 
+				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.",
+				'featured' => FALSE 
 			),
 			
 			array( 
@@ -531,7 +586,8 @@ class Index extends Controller{
 				'type' => "Portfolio", 
 				'link' => 'http://pbr.halfnerddesigns.com', 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This site is still in production. It was made for my photographer friend and integrates with Google\'s Picasa API so the client can manage their photos via her Picasa account." 
+				'desc' => "This site is still in production. It was made for my photographer friend and integrates with Google\'s Picasa API so the client can manage their photos via her Picasa account.",
+				'featured' => TRUE 
 			),
 			
 			array( 
@@ -540,7 +596,8 @@ class Index extends Controller{
 				'type' => "Business", 
 				'link' => 'http://simplebicycleco.com', 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This site is for a custom frame maker in Washington. It was built on my framework and customized to give my client complete control of the site\'s content." 
+				'desc' => "This site is for a custom frame maker in Washington. It was built on my framework and customized to give my client complete control of the site\'s content.",
+				'featured' => FALSE 
 			),
 			
 			array( 
@@ -549,9 +606,22 @@ class Index extends Controller{
 				'type' => "Event", 
 				'link' => 'http://coleandheather.com', 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding." 
+				'desc' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding.",
+				'featured' => TRUE 
+			),
+			
+			array( 
+				'img' => 'hfn', 
+				'client' => "Halfnerd Framework", 
+				'type' => "Personal", 
+				'link' => 'http://halfnerd.com', 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in Permissions System" ),
+				'desc' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike.",
+				'featured' => TRUE
 			)
 		);
+		
+		return array_reverse( $return );
 		
 	}//getPortfolioEntries()
 	

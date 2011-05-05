@@ -662,6 +662,48 @@ class Article
 		
 	}//getArticles()
 	
+	public static function getArticleFromTags( $view_title, $section_title )
+	{
+		$return = FALSE;
+		$common = new Common();
+		
+		$sql = "
+		SELECT a.article_id 
+		FROM common_Articles a
+		JOIN common_Views v ON LOWER( TRIM( v.controller_name ) ) = '" . strtolower( trim( $view_title ) ) . "'
+		JOIN common_Sections s ON LOWER( TRIM( s.title ) ) = '" . strtolower( trim( $section_title ) ) . "'
+		WHERE a.section_id = s.section_id 
+		AND a.view_id = a.view_id
+		AND a.active = 1";
+		
+		$result = $common->m_db->query( $sql, __FILE__, __LINE__ );
+		
+		if( $common->m_db->numRows( $result ) > 0 )
+		{
+			$return = array();
+			while( $row = $common->m_db->fetchRow( $result ) )
+			{
+				$return[] = new Article( $row[0] );
+			}
+		}
+		
+		return $return;
+		
+	}//getArticleFromTags()
+	
+	public function splitBody()
+	{
+		$return = '';
+		$split = explode( "\n", $this->m_body );
+		
+		foreach( $split as $p )
+		{
+			if( strlen( trim( $p ) ) > 0 ) { $return[] = $p; }
+		}
+		
+		return $return;
+	}//splitBody()
+	
 	/**
 	* Returns next priority for given section/view.
 	* @author	20101213, Hafner
@@ -940,6 +982,18 @@ class Article
 
 				</div>
 				';
+				
+				$return = array( 'html' => $html );
+				break;
+				
+			case "pretty-article":
+				
+				$html = '';
+				
+				foreach( $vars['paragraphs'] as $p )
+				{
+					$html .= $vars['open_tag'] . $p . $vars['close_tag'];
+				}
 				
 				$return = array( 'html' => $html );
 				break;

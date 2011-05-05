@@ -360,6 +360,7 @@ class Common {
 		WHERE " . $pk . " > 0 AND active = 1
 		";
 		
+		//echo $sql . "\n<br/>";
 		$result = $this->m_db->query( $sql, __FILE__, __LINE__ );
 		
 		while( $row = $this->m_db->fetchAssoc( $result ) )
@@ -550,27 +551,35 @@ class Common {
 				break;
 				
 			case "select-list":
-				$return = '
-				<select name="' . $vars['name'] . '" class="select_list ' . $vars['class'] . '">
-					<option value="0">
-						' . $vars['default_option'] . '
-					</option>
-					';
 				
-				foreach( $vars['options'] as $i => $info )	
+				$return = '';
+				
+				if( is_array( $vars['options'] ) &&
+					count( $vars['options'] ) > 0 )
 				{
-					$selected = ( $vars['selected_option'] == $info['id'] ) ? 'selected="selected"' : '';
-					
+				
+					$return = '
+					<select name="' . $vars['name'] . '" class="select_list ' . $vars['class'] . '">
+						<option value="0">
+							' . $vars['default_option'] . '
+						</option>
+						';
+				
+					foreach( $vars['options'] as $i => $info )	
+					{
+						$selected = ( $vars['selected_option'] == $info['id'] ) ? 'selected="selected"' : '';
+						
+						$return .= '
+						<option value="' . $info['id'] . '" ' . $selected . '>
+							' . $info['title'] . '
+						</option>
+						';
+					}
+						
 					$return .= '
-					<option value="' . $info['id'] . '" ' . $selected . '>
-						' . $info['title'] . '
-					</option>
+					</select>
 					';
 				}
-					
-				$return .= '
-				</select>
-				';
 					
 				break;
 				
@@ -679,7 +688,7 @@ class Common {
 								break;
 							}
 							
-						$active_record = $records[$key];
+						$active_record = $records[$key - 1];
 						$content_vars = array( 'active_record' => $active_record, 'options' => $html_vars, 'item_num' => $key );
 						$content = ( !$is_static ) ?  call_user_func_array( array( $active_controller, "getHtml" ), array( $html_cmd, $content_vars ) ) : call_user_func_array( $active_controller . '::getHtml', array( $html_cmd, $content_vars ) );
 						
@@ -758,7 +767,7 @@ class Common {
 				else
 				{
 					$html .= '
-					<li>
+					<li class="center">
 						' . $empty_message . '
 					</li>
 					';
