@@ -964,7 +964,7 @@ class Common {
 	
 	public static function constructionEnvironments()
 	{
-		return array( 'live' );
+		return array();
 		
 	}//constructionEnvironments()
 	
