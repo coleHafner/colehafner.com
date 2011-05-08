@@ -83,7 +83,7 @@ class Layout
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 			
 			<title>' . $alias . ' - ' . $site . '</title>
-
+			
 			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/960_grid.css" type="text/css" />
 			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/jquery-ui-1.8.1.custom.css" type="text/css" />
 			<link rel="stylesheet" href="' . $file_paths['css'] . '/common.css" type="text/css" />
@@ -203,7 +203,7 @@ class Layout
 					<tr>
 						<td>
 							<div class="padder_10_right">
-								<a href="#">
+								<a href="http://facebook.com/colehafner" target="_blank">
 									<img src="/images/icon_facebook_bw.gif" />
 								</a>
 							</div>
@@ -219,16 +219,26 @@ class Layout
 						
 						<td>
 							<div class="padder_10_right">
+								<a href="http://www.linkedin.com/in/colehafner" target="_blank">
+									<img src="/images/icon_linkedIn_bw.gif" />
+								</a>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
 								<a href="http://twitter.com/#!/colehafner" target="_blank">
 									<img src="/images/icon_twitter_bw.gif" />
 								</a>
 							</div>
 						</td>
+						
 						<td>
 							<div class="padder_10_right">
 								&copy;&nbsp;2011 Cole Hafner
 							</div>
 						</td>
+						
 					</tr>
 				</table>
 			</div>
