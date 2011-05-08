@@ -123,7 +123,9 @@ class Index extends Controller{
 				
 				<input type="hidden" id="max_slides_h" value="' . ( count( $p_entries ) + 1 ) . '" />
 				<input type="hidden" id="current_slide_h" value="1" />
-				';
+				
+				<input type="hidden" id="feature_current" value="2" />
+				<input type="hidden" id="feature_state" value="playing" />';
 				
 				//slide key
 				foreach( $slides as $i => $slide )
@@ -161,7 +163,7 @@ class Index extends Controller{
 									<div class="item bg_dark">
 										<div class="featured_thumb_tiny bg_white"><img src="/images/site_' . $site['img'] . '_thumb.jpg" /></div>
 										<div class="featured_selector' . $selector . '"></div>
-										<a href="#" class="overlay" feature_num="' . $counter . '"></a>
+										<a href="#" class="overlay" feature_num="' . $counter . '" id="feature_slide_' . $counter . '"></a>
 									</div>
 									' . $spacer;
 						
@@ -227,6 +229,18 @@ class Index extends Controller{
 											<div class="default_line_height">
 												' . stripslashes( $site['desc'] ) . '
 											</div>
+											<div class="featured_blurb_link">
+											';
+											
+						if( $site['link'] !== FALSE )
+						{
+							$html .= '
+												<a href="' . $site['link'] . '" target="_blank">Launch Site&nbsp;&gt;&nbsp;&gt;</a>
+												';
+						}
+						
+						$html .= '
+											</div> 
 										</div>
 										';
 						
@@ -394,7 +408,15 @@ class Index extends Controller{
 																		</div>
 																		
 																		<div class="port_launch_site">
-																			<a href="' . $site['link'] . '">Launch Site &gt;&nbsp;&gt;</a>
+																		';
+					if( $site['link'] !== FALSE )
+					{
+						$html .= '
+																			<a href="' . $site['link'] . '" target="_blank">Launch Site&nbsp;&gt;&nbsp;&gt;</a>
+																			';
+					}
+					
+					$html .= '
 																		</div>
 																		
 																	</div>
@@ -446,7 +468,7 @@ class Index extends Controller{
 				$html = '
 				<div class="port_grid_item_container bg_tan box_shadow">
 					<img src="/images/site_' . $r['img'] . '_thumb_mid.jpg" />
-					<a href="#" class="overlay bg_white opacity_50 show_slide_p port_magnify" slide_num="' . ( $vars['item_num'] + 1 ) . '" style="display:none;"></a>
+					<a href="#" class="overlay bg_white opacity_70 show_slide_p port_magnify" slide_num="' . ( $vars['item_num'] + 1 ) . '" style="display:none;"></a>
 				</div>
 				';
 				
@@ -486,13 +508,14 @@ class Index extends Controller{
 				
 				<div class="con_container bg_tan box_shadow">
 					<div class="padder_15">
-						<form name="contact_form" id="contact_form">
+						<div class="result_message"></div>
+						<form name="email_form" id="email_form">
 						
-							<div class="padder_20_top">
+							<div>
 								<span class="title_span con_label">
 									Email:
 								</span>
-								<input type="text" class="text_input con_input" />
+								<input type="text" class="text_input con_input" name="contact_email" />
 							</div>
 							
 							<table class="con_selector_split padder_25_top">
@@ -502,20 +525,23 @@ class Index extends Controller{
 										<span class="title_span con_label">
 											Inquiry:
 										</span>
-										<select style="width:100%;">
-											<option value="0">Site Request</option>
+										<select style="width:100%;" name="contact_inquiry">
+											<option value="General Question">General Question</option>
+											<option value="Project Request">Project Request</option>
 										</select>
 									</td>
 									
 									<td class="spacer">&nbsp;</td>
 									
 									<td class="selector">
+										<!--
 										<span class="title_span con_label">
 											Budget:
 										</span>
-										<select style="width:100%;">
-											<option value="0">$1000</option>
+										<select style="width:100%;" name="contact_budget">
+											<option value="0">$1</option>
 										</select>
+										-->
 									</td>
 									
 								</tr>
@@ -525,11 +551,11 @@ class Index extends Controller{
 								<span class="title_span con_label">
 									Message:
 								</span>
-								<textarea class="con_textarea"></textarea>
+								<textarea class="con_textarea" name="contact_message"></textarea>
 							</div>
 							
 							<div class="padder_10_top padder_5_right">
-								<div class="con_button bg_red center">
+								<div class="con_button bg_red center" id="mail">
 									<div class="padder_10_top">
 										Send
 									</div>
@@ -574,9 +600,9 @@ class Index extends Controller{
 				'img' => 'mdp', 
 				'client' => "Madness Entertainment", 
 				'type' => "Portfolio", 
-				'link' => 'http://madnessentertainment.com', 
-				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.",
+				'link' => FALSE, 
+				'features' => array( "Youtube API Integration", "Custom Framework", "Built in CMS" ),
+				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.<br/><br/>The client is in the process of switching hosts. It will be online soon.",
 				'featured' => FALSE 
 			),
 			
@@ -584,9 +610,9 @@ class Index extends Controller{
 				'img' => 'pbr', 
 				'client' => "Rebekah Hill Photography", 
 				'type' => "Portfolio", 
-				'link' => 'http://pbr.halfnerddesigns.com', 
-				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This site is still in production. It was made for my photographer friend and integrates with Google\'s Picasa API so the client can manage their photos via her Picasa account.",
+				'link' => FALSE, 
+				'features' => array( "Google Photo API Integration", "Custom Framework", "Built in CMS" ),
+				'desc' => "This site is still in production. It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service.<div class=\"padder_5_top\">Since this site is still under development.</div>",
 				'featured' => TRUE 
 			),
 			
@@ -605,7 +631,7 @@ class Index extends Controller{
 				'client' => "Cole and Heather", 
 				'type' => "Event", 
 				'link' => 'http://coleandheather.com', 
-				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
+				'features' => array( "RSVP Tracking System", "Cross Browser Compliant", "Google Maps Integration" ),
 				'desc' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding.",
 				'featured' => TRUE 
 			),
@@ -614,9 +640,9 @@ class Index extends Controller{
 				'img' => 'hfn', 
 				'client' => "Halfnerd Framework", 
 				'type' => "Personal", 
-				'link' => 'http://halfnerd.com', 
+				'link' => FALSE, 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in Permissions System" ),
-				'desc' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike.",
+				'desc' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike.<div class=\"padder_5_top\">I have plans to release this framework under the GLP license. It will be soon be available.</div>",
 				'featured' => TRUE
 			)
 		);

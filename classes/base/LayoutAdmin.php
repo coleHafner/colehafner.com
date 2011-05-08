@@ -120,7 +120,7 @@ class LayoutAdmin
 					<div class="padder_10">
 					
 						<div class="logo_container rounded_corners bg_color_tan center border_color_accent">
-							<img src="/images/logo.png"/>
+							<img src="/images/logo_cms.png"/>
 						</div>
 						
 						<div class="logo_words_container header_mega color_accent">

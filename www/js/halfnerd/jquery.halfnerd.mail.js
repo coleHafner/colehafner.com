@@ -36,8 +36,8 @@ validation functions
 				
 				//get vars
 				var reply_split = reply.split( "^" );
-				var result =  reply_split[0];
-				var message = reply_split[1];  
+				var result =  $.trim( reply_split[0] );
+				var message = reply_split[1]; 
 				
 				//clear form
 				if( result == 1 )

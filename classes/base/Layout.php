@@ -92,6 +92,7 @@ class Layout
 			<script type="text/javascript" src="' . $file_paths['js_ex'] . '/jquery-ui-1.8.1.custom.min.js"></script>
 			<script type="text/javascript" src="' . $file_paths['js_ex'] . '/jquery.hotkeys.js"></script>
 			<script type="text/javascript" src="' . $file_paths['js'] . '/jquery.common.js"></script>
+			<script type="text/javascript" src="' . $file_paths['js_nerd'] . '/jquery.halfnerd.mail.js"></script>
 			
 		</head>
 		';
@@ -197,9 +198,95 @@ class Layout
 		else 
 		{
 			$footer_content = '
-			<div class="padder_5_top center">
-				Social Icons Here
+			<div style="position:relative;float:left;">
+				<table>
+					<tr>
+						<td>
+							<div class="padder_10_right">
+								<a href="#">
+									<img src="/images/icon_facebook_bw.gif" />
+								</a>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<a href="http://forrst.me/_cole" target="_blank">
+									<img src="/images/icon_forrst_bw.gif" />
+								</a>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<a href="http://twitter.com/#!/colehafner" target="_blank">
+									<img src="/images/icon_twitter_bw.gif" />
+								</a>
+							</div>
+						</td>
+						<td>
+							<div class="padder_10_right">
+								&copy;&nbsp;2011 Cole Hafner
+							</div>
+						</td>
+					</tr>
+				</table>
 			</div>
+			
+			<div style="position:relative;float:right;">
+				<table>
+					<tr>
+						
+						<td align="right">
+							<div class="padder_10_right">
+								Shortcuts:
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<div class="footer_shortcut bg_dark padder_3_top padder_5_right padder_3_bottom padder_5_left color_white center">
+									&uarr;
+								</div>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<div class="footer_shortcut bg_dark padder_3_top padder_5_right padder_3_bottom padder_5_left color_white center">
+									&rarr;
+								</div>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<div class="footer_shortcut bg_dark padder_3_top padder_5_right padder_3_bottom padder_5_left color_white center">
+									&darr;
+								</div>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<div class="footer_shortcut bg_dark padder_3_top padder_5_right padder_3_bottom padder_5_left color_white center">
+									&larr;
+								</div>
+							</div>
+						</td>
+						
+						<td>
+							<div class="padder_10_right">
+								<div class="footer_shortcut bg_dark padder_3_top padder_5_right padder_3_bottom padder_5_left color_white center">
+									Shift
+								</div>
+							</div>
+						</td>
+						
+					</tr>
+			</div>
+			
+			<div class="clear"></div>
 			';
 		}
 		

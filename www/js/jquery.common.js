@@ -38,6 +38,26 @@ hotkeys
 		slideHorizontal( slide_obj ); 
 	});
 	
+	//start slideshow
+	featured_ticker = setInterval( function(){
+		
+		//get current state
+		var feature_state = $( "#feature_state" ).attr( "value" );
+		
+		if( feature_state == "playing" )
+		{
+			//slide featured
+			var current_feature = parseInt( $( "#feature_current" ).attr( "value" ) );
+			var el = $( "#feature_slide_" + current_feature );
+			featureIncrement( current_feature, el );
+			
+			//update feature
+			var new_feature = ( current_feature == 3 ) ? 1 : ( current_feature + 1 );
+			$( "#feature_current" ).attr( "value", new_feature );
+		}
+		
+	}, 3500 );
+	
 /*----------------------------------------------------------------------------------------------------------
 element functions
 ----------------------------------------------------------------------------------------------------------*/
@@ -71,24 +91,12 @@ element functions
 		.click( function( event ){
 			
 			event.preventDefault();
-			$( this ).blur();
+			var el = $( this )
+			el.blur();
 			
-			var feature_num = $( this ).attr( "feature_num" );
-			
-			//switch off other active items
-			$( ".featured_nav div.featured_selector" ).removeClass( "featured_selector_active" ).addClass( "featured_selector_inactive" );
-			
-			//switch on current item
-			$( this ).parent().find( "div.featured_selector" ).removeClass( "featured_selector_inactive" ).addClass( "featured_selector_active" );
-			
-			//toggle photos
-			var reveal = "#photo_" + feature_num;
-			$( ".featured_photo" ).hide();
-			$( reveal ).fadeIn( 2000 );
-			
-			//toggle blurbs
-			$( ".featured_blurb" ).hide();
-			$( "#blurb_" + feature_num ).fadeIn( 2000 );
+			var feature_num = el.attr( "feature_num" );
+			featureIncrement( feature_num, el );
+			featurePause();
 		});
 	
 	$( ".port_grid td div.port_grid_item_container" )
@@ -168,11 +176,17 @@ function slideVertical( el )
 		var page = $( "#slide_v_key_" + requested_slide_string ).attr( 'name' );
 		var td_id = "nav_selector_" + page;
 		
+		//resume slideshow
+		if( page != "about" ) { featureResume(); }
+		
 		//change page title
 		var delim = " - ";
 		var title_split = document.title.split( delim );
 		var page_mod = page.charAt( 0 ).toUpperCase() + page.slice( 1 );
 		document.title = page_mod + delim + title_split[1];
+		
+		//change anchor
+		window.location = "#" + page;
 		
 		//control navigation effect
 		$( ".nav_table td div.nav_selector_hover, .nav_table td div.nav_selector" ).removeClass( "nav_selector_active" );
@@ -186,16 +200,66 @@ function slideVertical( el )
 		$( "#current_slide_v" ).attr( "value", requested_slide );
 		$( "#current_slide_v_name" ).attr( "value", page );
 		
-		//hide portfolio controls
-		if( page != "portfolio" ) $( ".port_controls" ).hide();
+		//toggle portfolio controls
+		if( page != "portfolio" ) 
+		{ 
+			$( ".port_controls" ).hide(); 
+		}
+		else
+		{
+			$( ".port_controls" ).fadeIn( 2000 );
+		}
 		
 		//slide content
 		$( ".slide_controls" ).children().removeClass( "selected" );
-		$( "#slide_holder" ).animate( { top:scroll_to.toString() }, 1000, function(){ 
-			
-			//show portfolio controls
-			if( page == "portfolio" ) $( ".port_controls" ).fadeIn( 2000 );
-		});
+		$( "#slide_holder" ).animate( { top:scroll_to.toString() }, 1000, function(){} );
 	}
 	
 }//slideVertical()
+
+function showMessage( message, form_result )
+{	
+	//class names
+	var target = ".result_message";
+	var success = "result_success";
+	var failure = "result_failure";
+	var result_class = ( form_result == 0 ) ? failure : success;
+	var opposite_class = ( result_class == success ) ? failure : success;
+	
+	//show message
+	if( $( target ).hasClass( opposite_class ) ) { $( target ).removeClass( opposite_class ); }
+	$( target ).addClass( result_class ).html( message );
+	
+}//showMessage()
+
+function featureIncrement( feature_num, el )
+{
+	//switch off other active items
+	$( ".featured_nav div.featured_selector" ).removeClass( "featured_selector_active" ).addClass( "featured_selector_inactive" );
+	
+	//switch on current item
+	$( el ).parent().find( "div.featured_selector" ).removeClass( "featured_selector_inactive" ).addClass( "featured_selector_active" );
+	
+	//toggle photos
+	var reveal = "#photo_" + feature_num;
+	$( ".featured_photo" ).hide();
+	$( reveal ).fadeIn( 2000 );
+	
+	//toggle blurbs
+	$( ".featured_blurb" ).hide();
+	$( "#blurb_" + feature_num ).fadeIn( 2000 );
+	
+	//update current featured slide
+	$( "#feature_current" ).attr( "value", feature_num );
+	
+}//runFeatured()
+
+function featurePause()
+{
+	$( "#feature_state" ).attr( "value", "pasued" );
+}//pauseFeatured()
+
+function featureResume()
+{
+	$( "#feature_state" ).attr( "value", "playing" );
+}//pauseFeatured()

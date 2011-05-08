@@ -6,11 +6,12 @@ session_start();
 //require classes
 require_once( "base/Article.php" );
 require_once( "base/Authentication.php" );
-require_once( "controllers/Admin.php" );
 require_once( "base/Common.php" );
+require_once( "base/EmailMessage.php" );
 require_once( "base/Session.php" );
 require_once( "base/User.php" );
 require_once( "base/UserType.php" );
+require_once( "controllers/Admin.php" );
 
 $common = new Common();
 $active_user = new User( Authentication::getLoginUserId() );
@@ -534,13 +535,14 @@ switch( $task )
 			case "validate":
 				//set vars
 				$email = new EmailMessage();
-				$form_result = $email->validateEmailForm( $_POST );
-				$result = ( !$form_result['result'] ) ? 1:0; 
-				echo $result . "^" . $form_result['message']; 
+				$form_result = $email->validateMailForm( $_POST );
+				$result = ( $form_result === FALSE ) ? 1:0; 
+				echo $result . "^" . $form_result; 
 				break;
 				
 			case "send":
 				$email = new EmailMessage();
+				$_POST['contact_message'] = "From: " . $_POST['contact_email'] . "\n\nInquiry: " . $_POST['contact_inquiry'] . "\n\nMessage: " . $_POST['contact_message'];
 				$email->sendMail( $_POST );
 				break;
 		}
