@@ -1,5 +1,11 @@
 $( document ).ready( function() {
 	
+	//detect IE
+	if( $.browser.msie )
+	{
+		alert( "This site is not compatible with Internet Explorer. Please use either Firefox, Chrome, or Safari for an optimal browsing experience." );
+	}
+	
 /*----------------------------------------------------------------------------------------------------------
 hotkeys
 ----------------------------------------------------------------------------------------------------------*/
