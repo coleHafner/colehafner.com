@@ -310,7 +310,7 @@ class Layout
 		<!--page wrapper-->
 		
 		<!--footer section-->
-		<div class="footer_section bg_tan">
+		<div class="footer_section bg_tan padder_3_top">
 			<div class="container_12">
 				<div class="grid_12">
 					' . $footer_content . '
