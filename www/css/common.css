@@ -255,6 +255,7 @@ Nav and logo
 	text-align:center;
 	background: url( '/images/logo.png' ) center center no-repeat;
 	background-color:#FF0000;
+	z-index:5;
 }
 
 .logo_box_shadow {
@@ -285,7 +286,7 @@ Nav and logo
 	width:100%;
 	height:3px;
 	bottom:10px;
-	background-color:#FF0000;
+	background-color:#800000;
 }
 
 .nav_container {
@@ -296,6 +297,7 @@ Nav and logo
 
 .nav_table {
 	position:relative;
+	z-index:0;
 }
 
 .nav_table td{
@@ -328,7 +330,7 @@ Nav and logo
 }
 
 .nav_selector_active {
-	background-image: url( '/images/nav_selector.png' );
+	background-image: url( '/images/nav_selector_maroon.png' );
 }
 
 /******************************************************************************************************************************************

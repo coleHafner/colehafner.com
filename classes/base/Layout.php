@@ -134,25 +134,26 @@ class Layout
 								<tr>
 							';
 		
-		foreach( $nav_items as $i => $nav )
-		{
-			$selected = ( $nav['cmd'] == "about" ) ? 'nav_selector_active' : '';
-			
-			$header_content .= '
+			foreach( $nav_items as $i => $nav )
+			{
+				$selected = ( $nav['cmd'] == "about" ) ? 'nav_selector_active' : '';
+				
+				$header_content .= '
 									<td class="' . $nav['cmd'] . '" process="' . $nav['cmd'] . '" slide_num="' . ( $i + 1 ) . '">
 										<div class="nav_selector ' . $selected . '" id="nav_selector_' . $nav['cmd'] . '"></div>
 										<div class="nav_selector_hover" id="nav_selector_hover_' . $nav['cmd'] . '"></div>
 										<a href="#' . $nav['cmd'] . '" class="overlay">&nbsp;</a>
 									</td>
 									';
-		}
-		
-		$header_content .= '
+			}
+			
+			$header_content .= '
 								</tr>
 							</table>
 						</div>
 						';
-		}
+			
+		}//if site is not under construction
 		
 		
 		$return .= '
