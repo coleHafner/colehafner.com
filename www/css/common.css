@@ -63,14 +63,20 @@ Sections
 	height:100%;
 }
 
+.spacer_section {
+	position:relative;
+	height:15px;
+	width:100%;
+}
+
 .header_section {
 	position:relative;
 	height:110px;
-	margin-top:15px;
 	width:100%;
 }
 
 .header_grid {
+	position:relative;
 	height:110px;
 }
 

@@ -290,6 +290,6 @@ function pageResize()
 	var inner_width = window.innerWidth;
 	
 	//resize page
-	$( "#page" ).css( "height", ( inner_height - 15 ) );
+	$( "#page" ).css( "height", inner_height );
 	
 }//pageResize()

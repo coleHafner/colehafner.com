@@ -162,6 +162,10 @@ class Layout
 		<!--wrapper-->
 		<div class="page" id="page">
 		
+			<!--spacer section-->
+			<div class="spacer_section">&nbsp;</div>
+			<!--/spacer section-->
+			
 			<!--header section-->
 			<div ' . $header_class . '>
 				<div class="container_12">
