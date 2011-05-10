@@ -160,7 +160,7 @@ class Layout
 		<body>
 		
 		<!--wrapper-->
-		<div class="page">
+		<div class="page" id="page">
 		
 			<!--header section-->
 			<div ' . $header_class . '>
@@ -300,25 +300,26 @@ class Layout
 			';
 		}
 		
+		
 		$return = '
 				
 				</div>
 			</div>
 			<!--/content section-->
 			
+			<!--footer section-->
+			<div class="footer_section bg_tan">
+				<div class="container_12">
+					<div class="grid_12">
+						' . $footer_content . '
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--/footer section-->
+			
 		</div>
 		<!--page wrapper-->
-		
-		<!--footer section-->
-		<div class="footer_section bg_tan padder_3_top">
-			<div class="container_12">
-				<div class="grid_12">
-					' . $footer_content . '
-				</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<!--/footer section-->
 		
 		<iframe class="input text_input" style="height:200px;width:600px;margin:20px auto 20px auto;display:none;" id="hidden_frame" name="hidden_frame" ></iframe>
 		';
