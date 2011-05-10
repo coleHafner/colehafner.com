@@ -119,12 +119,21 @@ class Users extends Controller{
 					
 			case "search":
 				
+				$search_results = User::getUserSearchResults( $this->m_controller_vars['id1'] );
 				$search_bar = self::getHtml( "get-search-bar", array( 'search_term' => $this->m_controller_vars['id1'] ) );
+				
+				if( isset( $this->m_controller_vars['id1'] ) && 
+					strlen( trim( $this->m_controller_vars['id1'] ) ) > 0 &&
+					count( $search_results ) == 0 )
+				{
+					
+					
+				}
 				
 				$headline = self::getHtml( "get-headline", array(
 					'title' => 'Search Results For "' . $this->m_controller_vars['id1'] . '"',
 					'extra_content' => $search_bar['html'] ) 
-				);
+				);	
 				
 				$empty_message = ' 
 				<div class="center">
@@ -139,7 +148,7 @@ class Users extends Controller{
 				';
 				
 				$grid_html = User::getHtml( "get-user-grid", array(
-					'records' => User::getUserSearchResults( $this->m_controller_vars['id1'] ), 
+					'records' => $search_results,
 					'container_class' => "user_badge",
 					'show_controls' => FALSE,
 					'hover_enabled' => "0",
@@ -150,7 +159,6 @@ class Users extends Controller{
 				$headline['html'] . '
 				
 				<div class="border_dark_grey rounded_corners">
-				
 					<div class="padder">
 						' . $grid_html['html'] . '
 					</div>

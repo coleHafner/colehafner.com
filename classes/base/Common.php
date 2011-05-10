@@ -619,22 +619,23 @@ class Common {
 				break;
 				
 			case "get-side-bar":
+				
 				$html = '
-				<div class="center rounded_corners color_accent border_dark_grey" style="height:200px;">
+				<div class="center rounded_corners color_accent border_dark_grey margin_10_bottom side_bar_container">
 					<div class="padder">
-						thing 1
+						Ad 1
 					</div>
 				</div>
 				
-				<div class="center rounded_corners color_accent border_dark_grey margin_20_top" style="height:200px;">
+				<div class="center rounded_corners color_accent border_dark_grey margin_10_bottom side_bar_container">
 					<div class="padder">
-						thing 2
+						Ad 2
 					</div>
 				</div>
 				
-				<div class="center rounded_corners color_accent border_dark_grey margin_20_top" style="height:200px;">
+				<div class="center rounded_corners color_accent border_dark_grey margin_10_bottom side_bar_container">
 					<div class="padder">
-						thing 3
+						Ad 3
 					</div>
 				</div>
 				';

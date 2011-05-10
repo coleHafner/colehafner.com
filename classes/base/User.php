@@ -1232,10 +1232,8 @@ class User
 				);
 				
 				$html = '
-				<div class="padder center header color_accent">
-					Update My Photo
-				</div>
-				
+				' . Common::getHtml( "title-bar", array( 'title' => "Update My Photo", 'classes' => '' ) ) . '
+					
 				<table style="position:relative;">
 					<tr>
 						<td>
@@ -1646,24 +1644,27 @@ class User
 		$return = array();
 		$common = new Common();
 		
-		$sql = "
-		SELECT 
-			user_id
-		FROM 
-			common_Users
-		WHERE 
-			user_id > 0 AND
-			active = 1 AND
-			LOWER( username ) LIKE '%" . strtolower( trim( $search_term ) ) . "%'
-		ORDER BY 
-			username ASC";
-		
-		$result = $common->m_db->query( $sql, __FILE__, __LINE__ );
-		
-		while( $row = $common->m_db->fetchRow( $result ) )
+		if( strlen( trim( $search_term ) ) > 0 )
 		{
-			$return[$i] = new User( $row[0], FALSE );
-			$i++;
+			$sql = "
+			SELECT 
+				user_id
+			FROM 
+				common_Users
+			WHERE 
+				user_id > 0 AND
+				active = 1 AND
+				LOWER( username ) LIKE '%" . strtolower( trim( $search_term ) ) . "%'
+			ORDER BY 
+				username ASC";
+			
+			$result = $common->m_db->query( $sql, __FILE__, __LINE__ );
+			
+			while( $row = $common->m_db->fetchRow( $result ) )
+			{
+				$return[$i] = new User( $row[0], FALSE );
+				$i++;
+			}
 		}
 		
 		return $return;
