@@ -1,11 +1,5 @@
 $( document ).ready( function() {
 	
-	//detect IE
-	if( $.browser.msie )
-	{
-		alert( "This site is not compatible with Internet Explorer. Please use either Firefox, Chrome, or Safari for an optimal browsing experience." );
-	}
-	
 /*----------------------------------------------------------------------------------------------------------
 hotkeys
 ----------------------------------------------------------------------------------------------------------*/
@@ -67,6 +61,14 @@ hotkeys
 /*----------------------------------------------------------------------------------------------------------
 element functions
 ----------------------------------------------------------------------------------------------------------*/
+	
+	//detect IE
+	if( $.browser.msie )
+	{
+		alert( "This site is not compatible with Internet Explorer. Please use either Firefox, Chrome, or Safari for an optimal browsing experience." );
+	}
+	
+	//element functions
 	$( ".nav_table td a.overlay" )
 		.click( function(){ 
 			$( this ).blur(); 
@@ -116,6 +118,17 @@ element functions
 			event.preventDefault();
 			slideHorizontal( $( this ) );
 		});
+});
+
+/*----------------------------------------------------------------------------------------------------------
+window events
+----------------------------------------------------------------------------------------------------------*/
+$( window ).resize( function(){
+	pageResize();
+});
+
+$( window ).load( function(){
+	pageResize();
 });
 
 function slideHorizontal( el )
@@ -269,3 +282,14 @@ function featureResume()
 {
 	$( "#feature_state" ).attr( "value", "playing" );
 }//pauseFeatured()
+
+function pageResize()
+{
+	//grab dimensions
+	var inner_height = window.innerHeight;
+	var inner_width = window.innerWidth;
+	
+	//resize page
+	$( "#page" ).css( "height", ( inner_height - 15 ) );
+	
+}//pageResize()
