@@ -401,9 +401,12 @@ class Common {
 				break;
 				
 			case "title-bar":
+				$center = ( array_key_exists( "center", $vars ) && $vars['center'] === FALSE ) ? "" : "center ";
 				$return = '
-				<div class="center header color_accent ' . $vars['classes'] . '">
-					' .  $vars['title'] . '
+				<div class="padder_10_bottom">
+					<div class="' . $center . 'header color_accent ' . $vars['classes'] . '">
+						' .  $vars['title'] . '
+					</div>
 				</div>
 				';
 				break;

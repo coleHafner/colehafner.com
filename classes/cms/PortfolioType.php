@@ -297,11 +297,8 @@ class PortfolioType
 				$list = self::getHtml( "get-list", array( 'records' => $records ) );
 				
 				$html = '
-				<div class="padder_20_bottom">
-					
-					<div class="padder_10 center header color_accent">
-						Manage Portfolio Types
-					</div>
+				' . Common::getHtml( "title-bar", array( 'title' => "Manage Portfolio Types", 'classes' => '' ) ) . '
+				<div class="padder_20_bottom padder_10_top">
 					
 					<div class="padder" id="section_items_container">			
 						' . $list['html'] . '

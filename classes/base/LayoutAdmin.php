@@ -71,11 +71,12 @@ class LayoutAdmin
 
 			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/960_grid.css" type="text/css" />
 			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/jquery-ui-1.8.1.custom.css" type="text/css" />
-			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/colorbox.css" type="text/css" />
+			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/jquery.tagsinput.css" type="text/css" />
 			<link rel="stylesheet" href="' . $file_paths['css'] . '/commonAdmin.css" type="text/css" />
 			
 			<script type="text/javascript" src="' . $file_paths['js_ex'] . '/jquery-1.4.2.js"></script>
 			<script type="text/javascript" src="' . $file_paths['js_ex'] . '/jquery-ui-1.8.1.custom.min.js"></script>
+			<script type="text/javascript" src="' . $file_paths['js_ex'] . '/jquery.tagsinput.js"></script>
 			
 			<script type="text/javascript" src="' . $file_paths['js_nerd'] . '/jquery.halfnerd.common.js"></script>
 			<script type="text/javascript" src="' . $file_paths['js_nerd'] . '/jquery.halfnerd.auth.js"></script>

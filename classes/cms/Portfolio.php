@@ -370,17 +370,40 @@ class Portfolio
 				
 			case "get-edit-form":
 				
+				$process = "add";
 				$record = $vars['active_record'];
 				
 				if( $record->m_portfolio_id > 0 )
 				{
-						
+					$process = "modify";
 				}
 				
+				/*
 				$form_big = self::getHtml( "get-photo-form", array( 'active_record' => $record, 'file_type' => "img_big" ) );
 				$form_small = self::getHtml( "get-photo-form", array( 'active_record' => $record, 'file_type' => "img_small" ) );
 				
+				<tr>
+						<td style="width:50%;">
+							<div class="padder_10">
+								<span class="title_span">
+									Image Small ( 225 x 125 ): 
+								</span>
+								' . $form_small['html'] . '
+							</div>
+						</td>
+						<td style="width:50%;">
+							<div class="padder_10">
+								<span class="title_span">
+									Image Big ( 600 x 335 ): 
+								</span>
+								' . $form_big['html'] . '
+							</div>
+						</td>
+					</tr>
+					*/
+				
 				$html = '
+				' . Common::getHtml( "title-bar", array( 'title' => ucfirst( $process ) . " Porfolio Entry", 'classes' => '' ) ) . '
 				<table style="position:relative;width:100%;">
 					<tr>
 						<td colspan="2">
@@ -410,24 +433,7 @@ class Portfolio
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td style="width:50%;">
-							<div class="padder_10">
-								<span class="title_span">
-									Image Small ( 225 x 125 ): 
-								</span>
-								' . $form_small['html'] . '
-							</div>
-						</td>
-						<td style="width:50%;">
-							<div class="padder_10">
-								<span class="title_span">
-									Image Big ( 600 x 335 ): 
-								</span>
-								' . $form_big['html'] . '
-							</div>
-						</td>
-					</tr>
+					
 					<tr>
 						<td colspan="2">
 							<div class="padder_10 padder_no_top">

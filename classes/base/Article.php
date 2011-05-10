@@ -820,79 +820,71 @@ class Article
 				$section_selector = $selector['html'];
 				
 				$html = '
-				<div class="padder_10">
-					' . Common::getHtml( "title-bar", array( 
-						'title' => ucWords( $process ) . " Post", 
-						'classes' => '' ) 
-					) . '
+				' . Common::getHtml( "title-bar", array( 'title' => ucWords( $process ) . " Post", 'classes' => '' ) ) . '
 					
-					<div id="result_' . $process . '_' . $a->m_article_id . '" class="result">
+				<form id="article_form_' . $a->m_article_id . '">
+					
+					<div class="padder_10">
+						<span class="title_span">
+							Title:
+						</span>
+						<input type="text" name="title" class="text_input text_extra_long" value="' . $title  . '" />
 					</div>
-	
-					<form id="article_form_' . $a->m_article_id . '">
-						
-						<div class="padder_10">
-							<span class="title_span">
-								Title:
-							</span>
-							<input type="text" name="title" class="text_input text_extra_long" value="' . $title  . '" />
-						</div>
-						
-						<div class="padder_10 padder_no_top">
-							<span class="title_span">
-								Guts:
-							</span>
-							<textarea name="body" id="' . $body_id . '" class="post_body">' . $body .'</textarea>
-						</div>
-						
-						
-						<div class="padder_10">
-							' . Common::getHtml( "selector-module", array( 
-								'title' => "View", 
-								'content' => $view_selector,
-								'content_class' => "" ) ) . '
-								
-							' . Common::getHtml( "selector-module-spacer", array() ) . '
+					
+					<div class="padder_10 padder_no_top">
+						<span class="title_span">
+							Guts:
+						</span>
+						<textarea name="body" id="' . $body_id . '" class="post_body">' . $body .'</textarea>
+					</div>
+					
+					
+					<div class="padder_10">
+						' . Common::getHtml( "selector-module", array( 
+							'title' => "View", 
+							'content' => $view_selector,
+							'content_class' => "" ) ) . '
 							
-							' . Common::getHtml( "selector-module", array( 
-								'title' => "Section", 
-								'content' => $section_selector,
-								'content_class' => "article_section_selector_" . $a->m_article_id ) ) . '
-								
-							<div class="clear"></div>
+						' . Common::getHtml( "selector-module-spacer", array() ) . '
+						
+						' . Common::getHtml( "selector-module", array( 
+							'title' => "Section", 
+							'content' => $section_selector,
+							'content_class' => "article_section_selector_" . $a->m_article_id ) ) . '
 							
-						</div>
+						<div class="clear"></div>
 						
-						<div class="padder_10 padder_no_top">
-							<span class="title_span">
-								Tags ( separate with space ):
-							</span>
-							<input type="text" name="tag_string" class="text_input text_extra_long" value="' . $tag_string  . '" />
-						</div>
-						
-						' . Common::getHtml( "get-form-buttons", array( 
-						
-							'left' => array( 
-								'pk_name' => "article_id",
-								'pk_value' => $a->m_article_id,
-								'process' => $process,
-								'id' => "article",
-								'button_value' => ucwords( $process ),
-								'extra_style' => 'style="width:41px;"' ),
-								
-							'right' => array(
-								'pk_name' => "item_id",
-								'pk_value' => $a->m_article_id,
-								'process' => "view",
-								'id' => "list_item",
-								'button_value' => "Cancel" )							) 
-						) . '
-													
-						<input type="hidden" name="user_id" value="' . $user_id . '"/>
-						<input type="hidden" name="from_add" value="' . $from_add . '"/>
-						
-					</form>
-				</div>
+					</div>
+					
+					<div class="padder_10 padder_no_top">
+						<span class="title_span">
+							Tags ( separate with space ):
+						</span>
+						<input type="text" name="tag_string" class="text_input text_extra_long" value="' . $tag_string  . '" />
+					</div>
+					
+					' . Common::getHtml( "get-form-buttons", array( 
+					
+						'left' => array( 
+							'pk_name' => "article_id",
+							'pk_value' => $a->m_article_id,
+							'process' => $process,
+							'id' => "article",
+							'button_value' => ucwords( $process ),
+							'extra_style' => 'style="width:41px;"' ),
+							
+						'right' => array(
+							'pk_name' => "item_id",
+							'pk_value' => $a->m_article_id,
+							'process' => "view",
+							'id' => "list_item",
+							'button_value' => "Cancel" )							) 
+					) . '
+												
+					<input type="hidden" name="user_id" value="' . $user_id . '"/>
+					<input type="hidden" name="from_add" value="' . $from_add . '"/>
+					
+				</form>
 				';
 				
 				$return = array( 'html' => $html );
