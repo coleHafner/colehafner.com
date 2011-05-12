@@ -115,8 +115,8 @@ class Common {
 				'classes' => "/classes",
 				'classes_ex' => "/classes/ex",
 				'db_host' => "localhost",
-				'db_name' => "colehafn_coh",
-				'db_user' => "colehafn_coh",
+				'db_name' => "colehafn_cjh",
+				'db_user' => "colehafn_cjh",
 				'db_pass' => "passwd1000!"
 			),
 			
@@ -135,8 +135,8 @@ class Common {
 				'classes' => "/classes",
 				'classes_ex' => "/classes/ex",
 				'db_host' => "localhost",
-				'db_name' => "colehafn_coh",
-				'db_user' => "colehafn_coh",
+				'db_name' => "colehafn_cjh",
+				'db_user' => "colehafn_cjh",
 				'db_pass' => "passwd1000!"
 			)
 		);
