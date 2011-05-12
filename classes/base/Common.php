@@ -95,7 +95,7 @@ class Common {
 				'classes' => "/classes",
 				'classes_ex' => "/classes/ex",
 				'db_host' => "localhost",
-				'db_name' => "cms",
+				'db_name' => "cjh",
 				'db_user' => "cms_user",
 				'db_pass' => "passwd1000!"
 			),

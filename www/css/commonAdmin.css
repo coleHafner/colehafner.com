@@ -664,7 +664,7 @@ Users
 .user_grid {
 	position:relative;
 	width:100%;
-	border-spacing:10px;
+	border-spacing:7px;
 }
 
 .user_grid td{

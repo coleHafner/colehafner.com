@@ -5,7 +5,7 @@
  */
 
 require_once( "base/Common.php" );
-require_once( "cms/Skill.php" );
+require_once( "cjh/Skill.php" );
 
 class Portfolio
 {
@@ -110,7 +110,7 @@ class Portfolio
 			timestamp,
 			active
 		FROM 
-			cms_Portfolio
+			cjh_Portfolio
 		WHERE 
 			portfolio_id = " . $this->m_portfolio_id;
 		
@@ -186,7 +186,7 @@ class Portfolio
 				'img_small' => 0
 			);
 			
-			$input['portfolio_id'] = $this->m_common->m_db->insertBlank( 'cms_Portfolio', 'portfolio_id', $req_fields );
+			$input['portfolio_id'] = $this->m_common->m_db->insertBlank( 'cjh_Portfolio', 'portfolio_id', $req_fields );
 			
 			$this->m_portfolio_id = $input['portfolio_id'];
 			$return = $this->m_portfolio_id;
@@ -220,7 +220,7 @@ class Portfolio
 		{
 			$sql = "
 			UPDATE 
-				cms_Portfolio
+				cjh_Portfolio
 			SET 
 				title = '" . $this->m_common->m_db->escapeString( $input['title'] ) . "',
 				description = '" .  $this->m_common->m_db->escapeString( $input['description'] ) . "',
@@ -253,7 +253,7 @@ class Portfolio
 		if( $deactivate )
 		{
 			$sql = "
-			UPDATE cms_Portfolio
+			UPDATE cjh_Portfolio
 			SET active = 0
 			WHERE portfolio_id = " . $this->m_portfolio_id;
 			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
@@ -261,10 +261,10 @@ class Portfolio
 		else
 		{
 			$sql_string = "
-			DELETE FROM cms_PortfolioToSkill
+			DELETE FROM cjh_PortfolioToSkill
 			WHERE portfolio_id = " . $this->m_portfolio_id . "
 			--end-sql--
-			DELETE FROM cms_Portfolio
+			DELETE FROM cjh_Portfolio
 			WHERE portfolio_id = " . $this->m_portfolio_id;
 			
 			$sql_split = explode( "--end-sql--", $sql_string );
@@ -336,7 +336,7 @@ class Portfolio
 		
 		$sql = "
 		SELECT portfolio_id
-		FROM cms_Portfolio
+		FROM cjh_Portfolio
 		WHERE portfolio_id > 0 AND
 		" . $field . " = " . $pk . "
 		ORDER BY timestamp DESC";
@@ -534,7 +534,7 @@ class Portfolio
 	public function getSkills()
 	{
 		$return = array();
-		$sql = "SELECT skill_id FROM cms_PortfolioToSkill WHERE portfolio_id = " . $this->m_portfolio_id . " ORDER BY title ASC";
+		$sql = "SELECT skill_id FROM cjh_PortfolioToSkill WHERE portfolio_id = " . $this->m_portfolio_id . " ORDER BY title ASC";
 		$result = $this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
 		
 		while( $row = $this->m_common->m_db->fetchRow( $result ) )

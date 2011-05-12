@@ -1640,7 +1640,6 @@ class User
 	
 	public static function getUserSearchResults( $search_term )
 	{
-		$i = 1;
 		$return = array();
 		$common = new Common();
 		
@@ -1662,8 +1661,7 @@ class User
 			
 			while( $row = $common->m_db->fetchRow( $result ) )
 			{
-				$return[$i] = new User( $row[0], FALSE );
-				$i++;
+				$return[] = new User( $row[0], FALSE );
 			}
 		}
 		

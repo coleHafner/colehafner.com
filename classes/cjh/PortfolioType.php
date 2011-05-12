@@ -66,7 +66,7 @@ class PortfolioType
 			title,
 			active
 		FROM 
-			cms_PortfolioTypes
+			cjh_PortfolioTypes
 		WHERE 
 			portfolio_type_id = " . $this->m_portfolio_type_id;
 		
@@ -125,7 +125,7 @@ class PortfolioType
 		if( !$this->m_form->m_error )
 		{
 			//only set upload_timestamp on add
-			$input['portfolio_type_id'] = $this->m_common->m_db->insertBlank( 'cms_PortfolioTypes', 'portfolio_type_id' );
+			$input['portfolio_type_id'] = $this->m_common->m_db->insertBlank( 'cjh_PortfolioTypes', 'portfolio_type_id' );
 			$this->m_portfolio_type_id = (int) $input['portfolio_type_id'];
 			$return = $this->m_portfolio_type_id;
 			$this->modify( $input, TRUE );
@@ -156,7 +156,7 @@ class PortfolioType
 		{
 			$sql = "
 			UPDATE 
-				cms_PortfolioTypes
+				cjh_PortfolioTypes
 			SET 
 				title = '" . $this->m_common->m_db->escapeString( $input['title'] ) . "' 
 			WHERE 
@@ -184,7 +184,7 @@ class PortfolioType
 		if( $deactivate )
 		{
 			$sql = "
-			UPDATE cms_PortfolioTypes
+			UPDATE cjh_PortfolioTypes
 			SET active = 0
 			WHERE portfolio_type_id = " . $this->m_portfolio_type_id;
 			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
@@ -193,11 +193,11 @@ class PortfolioType
 		{
 			$sql_string = "
 			DELETE
-			FROM cms_Portfolio
+			FROM cjh_Portfolio
 			WHERE portfolio_type_id = " . $this->m_portfolio_type_id . "
 			--end-sql--
 			DELETE
-			FROM cms_PortfolioTypes
+			FROM cjh_PortfolioTypes
 			WHERE portfolio_type_id = " . $this->m_portfolio_type_id;
 			
 			$sql_split = explode( "--end-sql--", $sql_string );
@@ -234,7 +234,7 @@ class PortfolioType
 		if( !$this->m_form->m_error )
 		{
 			$dup_check = array( 
-				'table_name' => "cms_PortfolioTypes",
+				'table_name' => "cjh_PortfolioTypes",
 				'pk_name' => "portfolio_type_id",
 				'check_values' => array( 'title' => strtolower( $input['title'] ) )
 			);
@@ -266,7 +266,7 @@ class PortfolioType
 		
 		$sql = "
 		SELECT portfolio_type_id
-		FROM cms_PortfolioTypes
+		FROM cjh_PortfolioTypes
 		WHERE " . $field . " = " . $field_val . "
 		ORDER BY title ASC";
 		

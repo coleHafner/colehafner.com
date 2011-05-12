@@ -66,7 +66,7 @@ class Skill
 			title,
 			active
 		FROM 
-			cms_Skills
+			cjh_Skills
 		WHERE 
 			skill_id = " . $this->m_skill_id;
 		
@@ -125,7 +125,7 @@ class Skill
 		if( !$this->m_form->m_error )
 		{
 			//only set upload_timestamp on add
-			$input['skill_id'] = $this->m_common->m_db->insertBlank( 'cms_Skills', 'skill_id' );
+			$input['skill_id'] = $this->m_common->m_db->insertBlank( 'cjh_Skills', 'skill_id' );
 			$this->m_skill_id = (int) $input['skill_id'];
 			$return = $this->m_skill_id;
 			$this->modify( $input, TRUE );
@@ -156,7 +156,7 @@ class Skill
 		{
 			$sql = "
 			UPDATE 
-				cms_Skills
+				cjh_Skills
 			SET 
 				title = '" . $this->m_common->m_db->escapeString( $input['title'] ) . "' 
 			WHERE 
@@ -184,7 +184,7 @@ class Skill
 		if( $deactivate )
 		{
 			$sql = "
-			UPDATE cms_Skills
+			UPDATE cjh_Skills
 			SET active = 0
 			WHERE skill_id = " . $this->m_skill_id;
 			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
@@ -193,11 +193,11 @@ class Skill
 		{
 			$sql_string = "
 			DELETE
-			FROM cms_Portfolio
+			FROM cjh_Portfolio
 			WHERE skill_id = " . $this->m_skill_id . "
 			--end-sql--
 			DELETE
-			FROM cms_Skills
+			FROM cjh_Skills
 			WHERE skill_id = " . $this->m_skill_id;
 			
 			$sql_split = explode( "--end-sql--", $sql_string );
@@ -234,7 +234,7 @@ class Skill
 		if( !$this->m_form->m_error )
 		{
 			$dup_check = array( 
-				'table_name' => "cms_Skills",
+				'table_name' => "cjh_Skills",
 				'pk_name' => "skill_id",
 				'check_values' => array( 'title' => strtolower( $input['title'] ) )
 			);
@@ -266,7 +266,7 @@ class Skill
 		
 		$sql = "
 		SELECT skill_id
-		FROM cms_Skills
+		FROM cjh_Skills
 		WHERE " . $field . " = " . $field_val . "
 		ORDER BY title ASC";
 		

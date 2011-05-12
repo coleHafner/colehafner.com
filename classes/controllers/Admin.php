@@ -12,9 +12,9 @@ require_once( "base/Setting.php" );
 require_once( "base/Controller.php" );
 require_once( "base/Permission.php" );
 require_once( "base/Authentication.php" );
-require_once( "cms/Portfolio.php" );
-require_once( "cms/PortfolioType.php" );
-require_once( "cms/Skill.php" );
+require_once( "cjh/Portfolio.php" );
+require_once( "cjh/PortfolioType.php" );
+require_once( "cjh/Skill.php" );
 
 class Admin extends Controller{
 	
