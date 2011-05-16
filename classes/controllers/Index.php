@@ -99,23 +99,26 @@ class Index extends Controller{
 				
 				<div class="port_controls" style="display:none;">
 					
-					<!--
-					<div class="port_control_grid">
-						<a href="#" class="overlay show_slide_p" slide_num="1"></a>
-					</div>
-					-->
-					
-					<div class="port_control_left">
-						<a href="#" class="overlay show_slide_p" direction="back"></a>
-					</div>
-					
-					<div class="port_control_right">
-						<a href="#" class="overlay show_slide_p" direction="forward"></a>
-					</div>
-					
-					<div class="clear"></div>
+					<table>
+						<tr>
+							<td>
+								<div class="port_control_left">
+									<a href="#" class="overlay show_slide_p" direction="back"></a>
+								</div>
+							</td>
+							<td>
+								<div class="port_control_grid">
+									<a href="#" class="overlay show_slide_p" slide_num="1"></a>
+								</div>
+							</td>
+							<td>
+								<div class="port_control_right">
+									<a href="#" class="overlay show_slide_p" direction="forward"></a>
+								</div>
+							</td>
+						</tr>
+					</table>
 				</div>
-				
 				
 				<input type="hidden" id="max_slides_v" value="' . count( $slides ) . '" />
 				<input type="hidden" id="current_slide_v" value="1" />

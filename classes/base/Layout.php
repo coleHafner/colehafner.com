@@ -215,7 +215,7 @@ class Layout
 						
 						<td>
 							<div class="padder_10_right">
-								<a href="http://forrst.me/_cole" target="_blank">
+								<a href="http://forrst.me/colehafner" target="_blank">
 									<img src="/images/icon_forrst_bw.gif" />
 								</a>
 							</div>

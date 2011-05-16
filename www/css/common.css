@@ -486,10 +486,11 @@ Page - Portfolio
 
 .port_controls {
 	position:absolute;
-	top:230px;
-	left:-70px;
-	width:1080px;
+	top:-5px;
+	right:20px;
+	width:200px;
 	height:80px;
+	z-index:101;
 }
 
 .port_magnify {
@@ -508,17 +509,14 @@ Page - Portfolio
 }
 
 .port_control_left { 
-	float:left;
 	background-image:url( '/images/port_control_left.png' );
 }
 
 .port_control_right { 
-	float:right;
 	background-image:url( '/images/port_control_right.png' );
 }
 
 .port_control_grid { 
-	float:left;
 	background-image:url( '/images/port_control_grid_dark.png' );
 }
 
