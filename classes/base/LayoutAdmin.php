@@ -66,6 +66,7 @@ class LayoutAdmin
 		<head>
 		
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+			<link rel="icon" type="image/png" href="/images/favicon.ico" />
 			
 			<title>' . $alias . ' - ' . $site . '</title>
 
