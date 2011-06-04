@@ -61,7 +61,7 @@ class Admin extends Controller{
 		</div>
 		
 		<div class="grid_9">				
-			<div class="title_bar header center padder_15 bg_gradient_linear color_orange">
+			<div class="title_bar header padder_15 bg_color_light_tan color_orange">
 				' . $content['title'] . ' 
 				' . $content['title_button'] . '
 			</div>

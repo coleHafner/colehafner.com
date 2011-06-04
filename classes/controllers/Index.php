@@ -429,12 +429,12 @@ class Index extends Controller{
 														</tr>
 													</table>
 													
-													<div class="port_title bg_red box_shadow">
+													<div class="port_title bg_red box_shadow_title">
 														<div class="padder_10 port_title_text">
 															' . $site['client'] . '
 															
 														</div>
-														<div class="logo_ne"></div>
+														<div class="logo_nw"></div>
 													</div>
 													
 												</div>

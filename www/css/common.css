@@ -185,6 +185,12 @@ padding, colors, borders
 	box-shadow:2px 2px 5px #888;
 }
 
+.box_shadow_title {
+	-moz-box-shadow:-2px 2px 5px #888;
+	-webkit-box-shadow:-2px 2px 5px #888;
+	box-shadow:-2px 2px 5px #888;
+}
+
 .overlay, .overlay_absolute {
 	position:relative;
 	display:block;
@@ -270,7 +276,7 @@ Nav and logo
 	box-shadow:0px 5px 5px #888;
 }
 
-.logo_ne, .logo_se {
+.logo_ne, .logo_se, .logo_nw {
 	position:absolute;
 	width:11px;
 	height:11px;
@@ -285,6 +291,12 @@ Nav and logo
 .logo_se {
 	bottom:0px;
 	background: url( '/images/logo_se.png' ) center center no-repeat;
+}
+
+.logo_nw { 
+	top:0px;
+	background: url( '/images/logo_nw.gif' ) center center no-repeat;
+	left:-11px !important; 
 }
 
 .logo_stripe {
@@ -535,7 +547,7 @@ Page - Portfolio
 .port_title {
 	position:absolute;
 	top:-21px;
-	right:10px;
+	left:10px;
 }
 
 .port_title_text {
