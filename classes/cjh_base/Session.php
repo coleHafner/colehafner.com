@@ -5,9 +5,9 @@
  * @since	20101025, hafner
  */
 
-require_once( "base/Common.php" );
-require_once( "base/FormHandler.php" );
-require_once( "base/User.php" );
+require_once( "cjh_base/Common.php" );
+require_once( "cjh_base/FormHandler.php" );
+require_once( "cjh_base/User.php" );
 
 class Session
 {

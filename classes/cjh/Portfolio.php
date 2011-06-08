@@ -4,7 +4,7 @@
  * @since	20100618, hafner
  */
 
-require_once( "base/Common.php" );
+require_once( "cjh_base/Common.php" );
 require_once( "cjh/Skill.php" );
 
 class Portfolio

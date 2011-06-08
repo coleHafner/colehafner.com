@@ -4,9 +4,9 @@
  * @since	20100425, halfNerd
  */
 
-require_once( "base/Common.php" );
-require_once( "base/View.php" );
-require_once( "base/User.php" );
+require_once( "cjh_base/Common.php" );
+require_once( "cjh_base/View.php" );
+require_once( "cjh_base/User.php" );
 
 abstract class Controller{
 	

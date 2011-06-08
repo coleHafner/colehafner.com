@@ -4,9 +4,9 @@
  * @since	20100425, halfNerd
  */
 
-require_once( "base/Controller.php" );
-require_once( "base/Article.php" );
-require_once( "base/File.php" );
+require_once( "cjh_base/Controller.php" );
+require_once( "cjh_base/Article.php" );
+require_once( "cjh_base/File.php" );
 
 class Index extends Controller{
 	

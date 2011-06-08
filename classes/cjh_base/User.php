@@ -4,15 +4,15 @@
  * @since	20100911, Hafner
  */
 
-require_once( "base/File.php" );
-require_once( "base/Common.php" );
-require_once( "base/Article.php" );
-require_once( "base/Session.php" );
-require_once( "base/UserType.php" );
-require_once( "base/FileHandler.php" );
-require_once( "base/FormHandler.php" );
-require_once( "base/Permission.php" );
-require_once( "base/Authentication.php" );
+require_once( "cjh_base/File.php" );
+require_once( "cjh_base/Common.php" );
+require_once( "cjh_base/Article.php" );
+require_once( "cjh_base/Session.php" );
+require_once( "cjh_base/UserType.php" );
+require_once( "cjh_base/FileHandler.php" );
+require_once( "cjh_base/FormHandler.php" );
+require_once( "cjh_base/Permission.php" );
+require_once( "cjh_base/Authentication.php" );
 
 class User
 {

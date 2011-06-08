@@ -4,14 +4,14 @@
  * @since	20100425, halfNerd
  */
 
-require_once( "base/View.php" );
-require_once( "base/User.php" );
-require_once( "base/Article.php" );
-require_once( "base/Section.php" );
-require_once( "base/Setting.php" );
-require_once( "base/Controller.php" );
-require_once( "base/Permission.php" );
-require_once( "base/Authentication.php" );
+require_once( "cjh_base/View.php" );
+require_once( "cjh_base/User.php" );
+require_once( "cjh_base/Article.php" );
+require_once( "cjh_base/Section.php" );
+require_once( "cjh_base/Setting.php" );
+require_once( "cjh_base/Controller.php" );
+require_once( "cjh_base/Permission.php" );
+require_once( "cjh_base/Authentication.php" );
 require_once( "cjh/Portfolio.php" );
 require_once( "cjh/PortfolioType.php" );
 require_once( "cjh/Skill.php" );

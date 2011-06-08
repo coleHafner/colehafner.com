@@ -4,14 +4,14 @@
 session_start();
 
 //require classes
-require_once( "base/Article.php" );
-require_once( "base/Authentication.php" );
-require_once( "base/Common.php" );
-require_once( "base/EmailMessage.php" );
-require_once( "base/Session.php" );
-require_once( "base/User.php" );
-require_once( "base/UserType.php" );
-require_once( "controllers/Admin.php" );
+require_once( "cjh_base/Article.php" );
+require_once( "cjh_base/Authentication.php" );
+require_once( "cjh_base/Common.php" );
+require_once( "cjh_base/EmailMessage.php" );
+require_once( "cjh_base/Session.php" );
+require_once( "cjh_base/User.php" );
+require_once( "cjh_base/UserType.php" );
+require_once( "cjh_controllers/Admin.php" );
 
 $common = new Common();
 $active_user = new User( Authentication::getLoginUserId() );

@@ -5,10 +5,10 @@
  * @since 20100508, hafner
  */
 
-require_once( "base/Database.php" );
-require_once( "base/File.php" );
-require_once( "base/FileType.php" );
-require_once( "base/FileHandler.php" );
+require_once( "cjh_base/Database.php" );
+require_once( "cjh_base/File.php" );
+require_once( "cjh_base/FileType.php" );
+require_once( "cjh_base/FileHandler.php" );
 
 class Common {
 	
@@ -907,7 +907,7 @@ class Common {
 		$paths = $this->getPathInfo();
 		$env_paths = $paths[ $this->m_env ];
 		
-		return $env_paths['absolute'] . $env_paths['classes'] . "/controllers/";
+		return $env_paths['absolute'] . $env_paths['classes'] . "/cjh_controllers/";
 		
 	}//compileControllerLocationBasePath()
 	

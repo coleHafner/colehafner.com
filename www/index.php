@@ -3,10 +3,10 @@
 session_start();
 
 //include files
-require_once( "base/Common.php" );
-require_once( 'base/Layout.php' );
-require_once( 'base/LayoutAdmin.php' );
-require_once( 'base/Authentication.php' );
+require_once( "cjh_base/Common.php" );
+require_once( 'cjh_base/Layout.php' );
+require_once( 'cjh_base/LayoutAdmin.php' );
+require_once( 'cjh_base/Authentication.php' );
 
 //guarantee vars
 $_GET['session'] = $_SESSION;
@@ -36,7 +36,7 @@ if( !$common->controllerFileExists( $requested_controller ) )
 }
 
 //create new controller
-require_once( "controllers/" . $requested_controller );
+require_once( "cjh_controllers/" . $requested_controller );
 
 $login_string = '';
 $controller = new $layout->m_active_controller_name( $_GET, TRUE );

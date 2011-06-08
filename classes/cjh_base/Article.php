@@ -3,11 +3,11 @@
  * A class to handle a File record.
  * @since	20100618, hafner
  */
-require_once( 'base/Authentication.php' );
-require_once( "base/FormHandler.php" );
-require_once( 'base/Section.php' );
-require_once( "base/Common.php" );
-require_once( 'base/View.php' );
+require_once( 'cjh_base/Authentication.php' );
+require_once( "cjh_base/FormHandler.php" );
+require_once( 'cjh_base/Section.php' );
+require_once( "cjh_base/Common.php" );
+require_once( 'cjh_base/View.php' );
 
 class Article
 {

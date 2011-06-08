@@ -4,11 +4,10 @@
  * @since	20100618, hafner
  */
 
-require_once( "base/Common.php" );
-require_once( "base/FormHandler.php" );
-require_once( "base/File.php" );
+require_once( "cjh_base/Common.php" );
+require_once( "cjh_base/FormHandler.php" );
 
-class UserType
+class Section
 {
 	/**
 	 * Instance of the Common class.
@@ -26,11 +25,11 @@ class UserType
 	 * PK of the File Record.
 	 * @var	int
 	 */
-	protected $m_user_type_id;
+	protected $m_section_id;
 	
 	/**
-	 * Alias of this view.
-	 * @var	string
+	 * Id of the file_type related to this record.
+	 * @var	int
 	 */
 	protected $m_title;
 	
@@ -50,15 +49,14 @@ class UserType
 	 * Constructs the object.
 	 * @since	20100618, hafner
 	 * @return	State
-	 * @param	int				$user_type_id			id of the current record
+	 * @param	int				$section_id			id of the current record
 	 */
-	public function __construct( $user_type_id, $objects = FALSE )
+	public function __construct( $section_id, $objects = FALSE )
 	{
 		$this->m_common = new Common();
 		$this->m_form = new FormHandler( 1 );
-		$this->m_user_type_id = ( is_numeric( $user_type_id ) ) ? $user_type_id : 0; 
+		$this->m_section_id = ( is_numeric( $section_id ) && $section_id > 0 ) ? $section_id : 0;
 		$this->setMemberVars( $objects );
-		
 	}//constructor
 	
 	/**
@@ -72,20 +70,18 @@ class UserType
 		//get member vars
 		$sql = "
 		SELECT 
-			user_type_id,
+			section_id,
 			title,
 			active
 		FROM 
-			common_UserTypes
+			common_Sections
 		WHERE 
-			user_type_id = " . $this->m_user_type_id;
-		
+			section_id = " . $this->m_section_id;
 		$result = $this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
 		$row = ( $this->m_common->m_db->numRows( $result ) > 0 ) ? $this->m_common->m_db->fetchAssoc( $result ) : array();
-		$row = array_change_key_case( $row, CASE_LOWER );
-
+		
 		//set member vars
-		$this->m_user_type_id = $row['user_type_id'];
+		$this->m_section_id = $row['section_id'];
 		$this->m_title = stripslashes( $row['title'] );
 		$this->m_active = $this->m_common->m_db->fixBoolean( $row['active'] );
 		$this->m_linked_objects = ( $objects ) ? $this->setLinkedObjects() : array();
@@ -103,7 +99,7 @@ class UserType
 	public function getDataArray( $fix_clob = TRUE ) 
 	{
 		return array(
-			'user_type_id' => $this->m_user_type_id,
+			'section_id' => $this->m_section_id,
 			'title' => $this->m_title,
 			'active' => $this->m_active
 		);
@@ -136,18 +132,16 @@ class UserType
 		if( !$this->m_form->m_error )
 		{
 			//only set upload_timestamp on add
-			$input['user_type_id'] = $this->m_common->m_db->insertBlank( 'common_UserTypes', 'user_type_id', array() );
-			$this->m_user_type_id = (int) $input['user_type_id'];
+			$input['section_id'] = $this->m_common->m_db->insertBlank( 'common_Sections', 'section_id' );
+			$this->m_section_id = (int) $input['section_id'];
+			$return = $this->m_section_id;
 			$this->modify( $input, TRUE );
-			$return = $this->m_user_type_id;
 		}
 		else
 		{
 			$return = $this->m_form->m_error;
 		}
-		
 		return $return;
-		
 	}//add()
 	
 	/**
@@ -169,14 +163,12 @@ class UserType
 		{
 			$sql = "
 			UPDATE 
-				common_UserTypes
+				common_Sections
 			SET 
-				title = '" . addslashes( $input['title'] ) . "'
+				title = '" . $this->m_common->m_db->escapeString( $input['title'] ) . "' 
 			WHERE 
-				user_type_id = " . $this->m_user_type_id;
-				
+				section_id = " . $this->m_section_id;
 			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
-			$return = $this->m_user_type_id;
 		}
 		else
 		{
@@ -199,18 +191,29 @@ class UserType
 		if( $deactivate )
 		{
 			$sql = "
-			UPDATE common_UserTypes
+			UPDATE common_Sections
 			SET active = 0
-			WHERE user_type_id = " . $this->m_user_type_id;
+			WHERE section_id = " . $this->m_section_id;
 			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
 		}
 		else
 		{
 			$sql = "
 			DELETE
-			FROM common_UserTypes
-			WHERE user_type_id = " . $this->m_user_type_id;
+			FROM common_ArticleToSection
+			WHERE article_to_section_id IN ( 
+				SELECT section_id
+				FROM common_ArticleToView
+				WHERE section_id = " . $this->m_section_id . "
+			)";
 			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );
+			
+			
+			$sql = "
+			DELETE
+			FROM common_Sections
+			WHERE section_id = " . $this->m_section_id;
+			$this->m_common->m_db->query( $sql, __FILE__, __LINE__ );	
 		}
 		
 		return TRUE;
@@ -227,12 +230,27 @@ class UserType
 	 */
 	public function checkInput( $input, $is_addition )
 	{
-		//check missing alias
+		//check missing title
 		if( !array_key_exists( "title", $input ) || 
 			strlen( trim( $input['title'] ) ) == 0 ||
-			strtolower( $input['title'] ) == "new user type" )
+			strtolower( trim( $input['title'] ) ) == "section title" )
 		{
-			$this->m_form->m_error = "You must specify a title.";
+			$this->m_form->m_error = "You must select a section title.";
+		} 
+		
+		//check duplicate title
+		if( !$this->m_form->m_error )
+		{
+			$dup_check = array( 
+				'table_name' => "common_Sections",
+				'pk_name' => "section_id",
+				'check_values' => array( 'title' => strtolower( $input['title'] ) )
+			);
+			
+			if( is_numeric( $this->m_common->m_db->checkDuplicate( $dup_check ) ) )
+			{
+				$this->m_form->m_error = "That section title already exists";
+			}
 		}
 		
 		return $this->m_form->m_error;
@@ -240,32 +258,58 @@ class UserType
 	}//checkInput()
 	
 	/**
-	 * Sets the linked objects for this View object.
-	 * Returns array of linked objects.
-	 * @since	20100907, Hafner
+	 * Sets linked objects.
+	 * @since	20100718, hafner
 	 * @return	array
 	 */
 	public function setLinkedObjects()
 	{
-		return array();
-		
+		return array();	
 	}//setLinkedObjects()
 	
+	public static function getSections( $field, $field_val )
+	{
+		$return = array();
+		$common = new Common();
+		
+		$sql = "
+		SELECT section_id
+		FROM common_Sections
+		WHERE " . $field . " = " . $field_val . "
+		ORDER BY title ASC";
+		
+		$result = $common->m_db->query( $sql, __FILE__, __LINE__ );
+		
+		while( $row = $common->m_db->fetchRow( $result ) )
+		{
+			$return[] = new Section( $row[0] );
+		}
+		
+		return $return;
+		
+	}//getSections()
+	
+	/**
+	 * Outputs the html nav.
+	 * @since	20100726, hafner
+	 * @return	string
+	 */
 	public static function getHtml( $cmd, $vars = array() )
 	{
+	
 		switch( strtolower( trim( $cmd ) ) )
-		{				
-			case "get-manager":
+		{
+			case "get-section-manager":
 								
-				$records = self::getUserTypes( "active", "1" );
-				$list = self::getHtml( 'get-type-list', array( 'records' => $records ) );
+				$sections = self::getSections( "active", "1" );
+				$section_list = self::getHtml( 'get-section-list', array( 'records' => $sections ) );
 				
 				$html = '
-				' . Common::getHtml( "title-bar", array( 'title' => "Manage User Types", 'classes' => '' ) ) . '
+				' . Common::getHtml( "title-bar", array( 'title' => "Manage Sections", 'classes' => '' ) ) . '
 				<div class="padder_20_bottom padder_10_top">
 					
-					<div class="padder" id="user_type_items_container">			
-						' . $list['html'] . '
+					<div class="padder" id="section_items_container">			
+						' . $section_list['html'] . '
 					</div>
 									
 				</div>
@@ -274,7 +318,7 @@ class UserType
 				$return = array( 'html' => $html );
 				break;
 				
-			case "get-type-list":
+			case "get-section-list":
 				
 				$records = $vars['records'];
 				
@@ -282,24 +326,21 @@ class UserType
 				<table class="manager_items">
 					<tr id="section_item_add" class="bg_color_tan" >
 						<td style="width:33%">
-						
-							<div class="padder_10_left" >
-								<form id="user_type_form_0">
-									<input type="text" name="title" class="text_input text_long center color_black input_clear" value="New User Type" clear_if="New User Type" />
+							<div class="padder_10_left">
+								<form id="section_form_0">
+									<input type="text" name="title" class="text_input text_long center color_black input_clear" value="Section Title" clear_if="Section Title" />
 									<input type="hidden" name="from_add" value="1" />
 								</form>
 							</div>
-							
-							
 						</td>
 						
 						<td class="center" style="width:33%">
 							
 							' . Common::getHtml( "get-button", array( 
-								'pk_name' => "user_type_id",
+								'pk_name' => "section_id",
 								'pk_value' => "0",
 								'process' => "add",
-								'id' => "user_type",
+								'id' => "section",
 								'button_value' => "Add",
 								'extra_style' => 'style="width:41px;"' ) 
 							) . '
@@ -319,20 +360,20 @@ class UserType
 					</tr>
 				';
 				
-				foreach( $records as $i => $ut )
+				foreach( $records as $i => $s )
 				{						
-					$bg_color = ( $i%2 ) ? "bg_color_light_tan" : "bg_color_tan";
+					$bg_color = ( $i%2 ) ? "bg_color_tan" : "bg_color_light_tan";
 					
 					$html .= '
-					<tr id="user_type_item_' . $ut->m_user_type_id . '" class="' . $bg_color . '" >
+					<tr id="section_item_' . $s->m_section_id . '" class="' . $bg_color . '" >
 						<td style="width:33%">
-							<div id="user_type_title_' . $ut->m_user_type_id . '" class="header_sub color_black padder_10_left">
-								' . $ut->m_title . '
+							<div class="header_sub color_black padder_10_left" id="section_title_' . $s->m_section_id . '">
+								' . $s->m_title . '
 							</div>
 							
-							<div id="user_type_title_box_' . $ut->m_user_type_id . '" class="padder_10_left" style="display:none;" >
-								<form id="user_type_form_' . $ut->m_user_type_id . '">
-									<input type="text" name="title" class="text_input text_long center color_black" value="' . $ut->m_title . '" />
+							<div id="section_title_box_' . $s->m_section_id . '" class="padder_10_left" style="display:none;">
+								<form id="section_form_' . $s->m_section_id . '">
+									<input type="text" name="title" class="text_input text_long center color_black section_title" value="' . $s->m_title . '" />
 									<input type="hidden" name="from_add" value="0" />
 								</form>
 							</div>
@@ -341,33 +382,33 @@ class UserType
 						
 						<td class="center" style="width:33%">
 							
-							<div id="user_type_mod_init_' . $ut->m_user_type_id . '">
+							<div id="section_mod_init_' . $s->m_section_id . '">
 								' . Common::getHtml( "get-button-round", array(
-									'id' => "user_type",
+									'id' => "section",
 									'process' => "show_modify",
-									'pk_name' => "user_type_id",
-									'pk_value' => $ut->m_user_type_id,
+									'pk_name' => "section_id",
+									'pk_value' => $s->m_section_id,
 									'button_value' => "m",
 									'inner_div_style' => 'style="padding-top:2px;padding-left:1px;"',
 									'link_style' => 'style="margin:auto;"' ) 
 								) . '
 							</div>
 							
-							<div id="user_type_mod_confirm_' . $ut->m_user_type_id . '" style="display:none;">
+							<div id="section_mod_confirm_' . $s->m_section_id . '" style="display:none;">
 								' . Common::getHtml( "get-form-buttons", array( 
 									'left' => array(
-										'pk_name' => "user_type_id",
-										'pk_value' => $ut->m_user_type_id,
+										'pk_name' => "section_id",
+										'pk_value' => $s->m_section_id,
 										'process' => "modify",
-										'id' => "user_type",
+										'id' => "section",
 										'button_value' => "Modify",
 										'extra_style' => 'style="width:41px;"' ),
 									
 									'right' => array(
-										'pk_name' => "user_type_id",
-										'pk_value' => $ut->m_user_type_id,
+										'pk_name' => "section_id",
+										'pk_value' => $s->m_section_id,
 										'process' => "cancel_modify",
-										'id' => "user_type",
+										'id' => "section",
 										'button_value' => "Cancel",
 										'extra_style' => 'style="width:41px;"' ) )
 									) . '
@@ -377,33 +418,33 @@ class UserType
 						
 						<td class="center" style="width:34%">
 							
-							<div id="user_type_delete_init_' . $ut->m_user_type_id . '">
+							<div id="section_delete_init_' . $s->m_section_id . '">
 								' . Common::getHtml( "get-button-round", array(
-										'id' => "user_type",
+										'id' => "section",
 										'process' => "show_delete",
-										'pk_name' => "user_type_id",
-										'pk_value' => $ut->m_user_type_id,
+										'pk_name' => "section_id",
+										'pk_value' => $s->m_section_id,
 										'button_value' => "x",
 										'inner_div_style' => 'style="padding-top:2px;padding-left:1px;"',
 										'link_style' => 'style="margin:auto;"' ) 
 									) . '
 							</div>
 							
-							<div id="user_type_delete_confirm_' . $ut->m_user_type_id . '" style="display:none;">
+							<div id="section_delete_confirm_' . $s->m_section_id . '" style="display:none;">
 								' . Common::getHtml( "get-form-buttons", array( 
 									'left' => array(
-										'pk_name' => "user_type_id",
-										'pk_value' => $ut->m_user_type_id,
+										'pk_name' => "section_id",
+										'pk_value' => $s->m_section_id,
 										'process' => "delete",
-										'id' => "user_type",
+										'id' => "section",
 										'button_value' => "Delete",
 										'extra_style' => 'style="width:41px;"' ),
 									
 									'right' => array(
-										'pk_name' => "user_type_id",
-										'pk_value' => $ut->m_user_type_id,
+										'pk_name' => "section_id",
+										'pk_value' => $s->m_section_id,
 										'process' => "cancel_delete",
-										'id' => "user_type",
+										'id' => "section",
 										'button_value' => "Cancel",
 										'extra_style' => 'style="width:41px;"' ) )
 									) . '
@@ -421,82 +462,18 @@ class UserType
 				
 				$return = array( 'html' => $html );
 				break;
-				
-			case "get-radio-selectors":
-
-				$active_ut = $vars['active_record'];
-				$active_user = $vars['active_user'];
-				$all_ut = self::getUserTypes( "active", "1" );
-				
-				$html = '
-				<div class="padder spacer_bottom padder_10_left">
-					<div style="float:right;">
-						<a href="#" id="user" process="refresh_user_type_selector" user_id="' . $active_user->m_user_id . '">
-							Refresh
-						</a>
-					</div>
-				</div>
-				';
-				
-				foreach( $all_ut as $i => $ut )
-				{
-					$selected = ( $ut->m_user_type_id == $active_ut->m_user_type_id ) ? 'checked="checked"' : "";
-					$row_class = ( $i%2 ) ? "bg_color_tan" : "bg_color_light_tan";
-					
-					$html .= '
-					<div class="padder ' . $row_class . '">
-						<table>
-							<tr class="' . $row_class . '">	
-								<td style="vertical-align:top;">
-									<input type="radio" name="user_type_id" ' . $selected . ' value="' . $ut->m_user_type_id . '"/>&nbsp;
-								</td>
-														
-								<td>
-									<span class="header_sub color_accent">' . $ut->m_title . '</span>
-								</td>
-							</tr>
-						</table>
-					</div>
-					';
-				}
-				
-				$return = array( 'html' => $html );
-				break;
-				
+								
 			default:
-				throw new Exception( "Error: Invalid HTML command." );
+				//throw new exception( "Error: Invalid HTML option." );
+				$return = array();
 				break;
-		}
+				
+		}//end switch
 		
 		return $return;
 		
 	}//getHtml()
 	
-	public static function getUserTypes( $field, $value )
-	{
-		$i = 1;
-		$return = array();
-		$common = new Common();
-		
-		$sql = "
-		SELECT user_type_id
-		FROM common_UserTypes
-		WHERE user_type_id > 0 AND
-		" . $field . " = " . $value . "
-		ORDER BY title ASC";
-		
-		$result = $common->m_db->query( $sql, __FILE__, __LINE__ );
-		
-		while( $row = $common->m_db->fetchRow( $result ) )
-		{
-			$return[$i] = new UserType( $row[0], FALSE );
-			$i++;
-		}
-		
-		return $return;
-		
-	}//getUserTypes()
-		
    /**
 	* Get a member variable's value
 	* @author	Version 20100618, hafner
@@ -526,7 +503,7 @@ class UserType
 	*/
 	public function __set( $var_name, $var_value )
 	{
-		$exclusions = array( 'm_user_type_id' );
+		$exclusions = array( 'm_section_id' );
 
 		if( !in_array( $var_name, $exclusions ) )
 		{
@@ -538,6 +515,5 @@ class UserType
 			throw new exception( "Error: Access to member variable '" . $var_name . "' for class '" . get_class( $this ) . "' is denied" );
 		}
 	}//__set()
-	
-}//class View
+}//class Section
 ?>

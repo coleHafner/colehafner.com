@@ -4,10 +4,10 @@
  * @since	20100618, hafner
  */
 
-require_once( "base/Common.php" );
-require_once( "base/FormHandler.php" );
-require_once( "base/FileType.php" );
-require_once( "base/FileHandler.php" );
+require_once( "cjh_base/Common.php" );
+require_once( "cjh_base/FormHandler.php" );
+require_once( "cjh_base/FileType.php" );
+require_once( "cjh_base/FileHandler.php" );
 
 class File
 {

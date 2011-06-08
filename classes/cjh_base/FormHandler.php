@@ -4,7 +4,7 @@
 * @since	20100616, hafner
 */
 
-require_once( "base/Common.php" );
+require_once( "cjh_base/Common.php" );
 
 class FormHandler
 {

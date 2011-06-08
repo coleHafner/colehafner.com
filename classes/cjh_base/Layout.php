@@ -4,9 +4,9 @@
  * @since	20100425, hafner
  */
 
-require_once( 'base/Common.php' );
-require_once( 'base/View.php' );
-require_once( 'controllers/Index.php' );
+require_once( 'cjh_base/Common.php' );
+require_once( 'cjh_base/View.php' );
+require_once( 'cjh_controllers/Index.php' );
 
 class Layout
 {

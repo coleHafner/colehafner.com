@@ -6,8 +6,8 @@
  * To Create new controller: 'save as'
  */
 
-require_once( "base/Controller.php" );
-require_once( "base/User.php" );
+require_once( "cjh_base/Controller.php" );
+require_once( "cjh_base/User.php" );
 
 class Users extends Controller{
 	

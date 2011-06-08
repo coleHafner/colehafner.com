@@ -4,8 +4,8 @@
  * @since	20100425, hafner
  */
 
-require_once( 'base/Common.php' );
-require_once( 'base/View.php' );
+require_once( 'cjh_base/Common.php' );
+require_once( 'cjh_base/View.php' );
 
 class LayoutAdmin
 {
