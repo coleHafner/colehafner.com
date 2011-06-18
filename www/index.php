@@ -6,6 +6,7 @@ session_start();
 require_once( "cjh_base/Common.php" );
 require_once( 'cjh_base/Layout.php' );
 require_once( 'cjh_base/LayoutAdmin.php' );
+require_once( 'cjh_base/LayoutMobile.php' );
 require_once( 'cjh_base/Authentication.php' );
 
 //guarantee vars
@@ -15,6 +16,7 @@ $admin_controllers = array( "admin", "posts", "users", "account", "setting" );
 
 //setup objects
 $layout = ( in_array( strtolower( $_GET['v'] ), $admin_controllers ) ) ? new LayoutAdmin( $_GET ) : new Layout( $_GET );
+$layout = ( strtolower( get_class( $layout ) ) == "layout" && Common::isMobile() ) ? new LayoutMobile( $_GET ) : $layout;
 $auth = new Authentication( 0 );
 $common = &$auth->m_common;
 

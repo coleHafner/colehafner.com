@@ -66,7 +66,7 @@ class Index extends Controller{
 		{
 			case "slider":
 				
-				$p_entries = $this->getPortfolioEntries();
+				$p_entries = Common::getPortfolioEntries();
 				$slides = self::getNavItems();
 				
 				$html = '
@@ -145,7 +145,7 @@ class Index extends Controller{
 			case 'about':
 				
 				$counter = 1;
-				$sites = $this->getPortfolioEntries();
+				$sites = Common::getPortfolioEntries();
 				
 				$html = '
 				<div>
@@ -196,7 +196,9 @@ class Index extends Controller{
 						$display = ( $counter == 1 ) ? '' : ' style="display:none;"';
 					
 						$html .= '
-										<div class="featured_photo" id="photo_' . $counter . '"' . $display . '><img src="/images/site_' . $site['img'] . '_mid.jpg" /></div>
+										<div class="featured_photo" id="photo_' . $counter . '"' . $display . '>
+											<img src="/images/site_' . $site['img'] . '_mid.jpg" />
+										</div>
 										';
 						$counter++;
 						
@@ -312,7 +314,7 @@ class Index extends Controller{
 			case 'portfolio':
 				
 				$slide_num = 2;
-				$sites = $this->getPortfolioEntries();
+				$sites = Common::getPortfolioEntries();
 				
 				$grid_vars = array( 
 					'records' => $sites,
@@ -584,75 +586,6 @@ class Index extends Controller{
 		return $return;
 		
 	}//getHtml()
-	
-	public function getPortfolioEntries()
-	{
-		$return = array(
-		
-			array( 
-				'img' => 'bts', 
-				'client' => "Bottom Time Scuba", 
-				'type' => "Business", 
-				'link' => 'http://bottomtimescuba.org', 
-				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ), 
-				'desc' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. ",
-				'featured' => FALSE 
-			),
-			
-			array( 
-				'img' => 'mdp', 
-				'client' => "Madness Entertainment", 
-				'type' => "Portfolio", 
-				'link' => FALSE, 
-				'features' => array( "Youtube API Integration", "Custom Framework", "Built in CMS" ),
-				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.<br/><br/>The client is in the process of switching hosts. It will be online soon.",
-				'featured' => FALSE 
-			),
-			
-			array( 
-				'img' => 'pbr', 
-				'client' => "Rebekah Hill Photography", 
-				'type' => "Portfolio", 
-				'link' => FALSE, 
-				'features' => array( "Google Photo API Integration", "Custom Framework", "Built in CMS" ),
-				'desc' => "This site is still in production. It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service.<div class=\"padder_5_top\">Since this site is still under development.</div>",
-				'featured' => TRUE 
-			),
-			
-			array( 
-				'img' => 'sbc', 
-				'client' => "Simple Bicycle Co.", 
-				'type' => "Business", 
-				'link' => 'http://simplebicycleco.com', 
-				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
-				'desc' => "This site is for a custom frame maker in Washington. It was built on my framework and customized to give my client complete control of the site\'s content.",
-				'featured' => FALSE 
-			),
-			
-			array( 
-				'img' => 'cah', 
-				'client' => "Cole and Heather", 
-				'type' => "Event", 
-				'link' => 'http://coleandheather.com', 
-				'features' => array( "RSVP Tracking System", "Cross Browser Compliant", "Google Maps Integration" ),
-				'desc' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding.",
-				'featured' => TRUE 
-			),
-			
-			array( 
-				'img' => 'hfn', 
-				'client' => "Halfnerd Framework", 
-				'type' => "Personal", 
-				'link' => FALSE, 
-				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in Permissions System" ),
-				'desc' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike.<div class=\"padder_5_top\">I have plans to release this framework under the GLP license. It will be soon be available.</div>",
-				'featured' => TRUE
-			)
-		);
-		
-		return array_reverse( $return );
-		
-	}//getPortfolioEntries()
 	
 	public static function getNavItems()
 	{

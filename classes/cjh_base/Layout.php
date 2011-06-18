@@ -73,7 +73,7 @@ class Layout
 		$row = $this->m_common->m_db->fetchRow( $result );
 		$site = $row[0];
 		
-		return '
+		$return = '
 		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml" >
 		
@@ -81,11 +81,10 @@ class Layout
 		
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 			<link rel="icon" type="image/png" href="/images/favicon.ico" />
-			
 			<title>' . $alias . ' - ' . $site . '</title>
 			
-			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/960_grid.css" type="text/css" />
 			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/jquery-ui-1.8.1.custom.css" type="text/css" />
+			<link rel="stylesheet" href="' . $file_paths['css_ex'] . '/960_grid.css" type="text/css" />
 			<link rel="stylesheet" href="' . $file_paths['css'] . '/common.css" type="text/css" />
 			
 			<script type="text/javascript" src="' . $file_paths['js_ex'] . '/jquery-1.4.2.js"></script>
@@ -96,6 +95,8 @@ class Layout
 			
 		</head>
 		';
+		
+		return $return;
 		
 	}//getHtmlHeadSection()
 	

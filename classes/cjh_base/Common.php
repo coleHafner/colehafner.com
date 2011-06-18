@@ -891,6 +891,14 @@ class Common {
 		
 	}//getHtml()
 	
+	public static function isMobile()
+	{
+		return TRUE;
+		$mobiles = "up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|iphone|ipad|ipod|android|xoom";
+		return ( preg_match( '/(' . $mobiles . ')/i', strtolower( $_SERVER['HTTP_USER_AGENT'] ) ) ) ? TRUE : FALSE;
+		
+	}//isMobile()
+	
 	public function truncateString( $title )
 	{
 		return ( strlen( $title ) > 48 ) ? substr( $title, 0, 46 ) . "..." : $title; 
@@ -965,6 +973,81 @@ class Common {
 		return ( $row[0] == 1 ) ? ucfirst( strtolower( $get['v'] ) ) : "Index";
 		
 	}//validateView()
+	
+	public static function getPortfolioEntries()
+	{
+		$return = array(
+		
+			array( 
+				'img' => 'bts', 
+				'client' => "Bottom Time Scuba", 
+				'type' => "Business", 
+				'link' => 'http://bottomtimescuba.org', 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ), 
+				'desc' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. ",
+				'desc_clean' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. ",
+				'featured' => FALSE 
+			),
+			
+			array( 
+				'img' => 'mdp', 
+				'client' => "Madness Entertainment", 
+				'type' => "Portfolio", 
+				'link' => FALSE, 
+				'features' => array( "Youtube API Integration", "Custom Framework", "Built in CMS" ),
+				'desc' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.<br/><br/>The client is in the process of switching hosts. It will be online soon.",
+				'desc_clean' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.The client is in the process of switching hosts. It will be online soon.",
+				'featured' => FALSE 
+			),
+			
+			array( 
+				'img' => 'pbr', 
+				'client' => "Rebekah Hill Photography", 
+				'type' => "Portfolio", 
+				'link' => FALSE, 
+				'features' => array( "Google Photo API Integration", "Custom Framework", "Built in CMS" ),
+				'desc' => "This site is still in production. It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service.<div class=\"padder_5_top\">Since this site is still under development.</div>",
+				'desc_clean' => "This site is still in production. It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service. Since this site is still under development.",
+				'featured' => TRUE 
+			),
+			
+			array( 
+				'img' => 'sbc', 
+				'client' => "Simple Bicycle Co.", 
+				'type' => "Business", 
+				'link' => 'http://simplebicycleco.com', 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ),
+				'desc' => "This site is for a custom frame maker in Washington. It was built on my framework and customized to give my client complete control of the site\'s content.",
+				'desc_clean' => "This site is for a custom frame maker in Washington. It was built on my framework and customized to give my client complete control of the site\'s content.",
+				'featured' => FALSE 
+			),
+			
+			array( 
+				'img' => 'cah', 
+				'client' => "Cole and Heather", 
+				'type' => "Event", 
+				'link' => 'http://coleandheather.com', 
+				'features' => array( "RSVP Tracking System", "Cross Browser Compliant", "Google Maps Integration" ),
+				'desc' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding.",
+				'desc_clean' => "This is a personal project for my upcoming wedding. It was built on my framework and has a RSVP guest system built in. It also integrates with Google Maps API for easy directions to the wedding.",
+				'featured' => TRUE 
+			),
+			
+			array( 
+				'img' => 'hfn', 
+				'client' => "Halfnerd Framework", 
+				'type' => "Personal", 
+				'link' => "https://github.com/coleHafner/halfnerdcms", 
+				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in Permissions System" ),
+				'desc' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike.<div class=\"padder_5_top\">I have plans to release this framework under the GLP license. It will be soon be available.</div>",
+				'desc_clean' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike. I have plans to release this framework under the GLP license. It will be soon be available.",
+				'featured' => TRUE
+			)
+		);
+		
+		return array_reverse( $return );
+		
+	}//getPortfolioEntries()
 	
 	public static function constructionEnvironments()
 	{
