@@ -893,7 +893,6 @@ class Common {
 	
 	public static function isMobile()
 	{
-		return TRUE;
 		$mobiles = "up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|iphone|ipad|ipod|android|xoom";
 		return ( preg_match( '/(' . $mobiles . ')/i', strtolower( $_SERVER['HTTP_USER_AGENT'] ) ) ) ? TRUE : FALSE;
 		
