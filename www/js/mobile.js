@@ -91,7 +91,12 @@ function resizeCanvas()
 {
 	//calculate width
 	var max_slides = parseInt( $( "#max_slides" ).attr( "value" ) );
-	var slide_width = parseInt( $( ".slide" ).css( 'width' ).toString().replace( "px", "" ) );
+	var slide_width = window.innerWidth;
+	
+	//resize slides
+	var slide_width_string = slide_width.toString() + "px";
+	$( ".slide" ).css( "width", slide_width_string );
+	$( ".page" ).css( "width", slide_width_string );
 	  
 	//resize canvas
 	var total_width = max_slides * slide_width;
