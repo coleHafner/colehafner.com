@@ -113,11 +113,10 @@ h3 {
 .page {
 	position:relative;
 	overflow:hidden;
-	border-right:1px solid #000;
 }
 
 .slide_header, .slide_header_gradient {
-	position:absolute;
+	position:fixed;
 	top:0px;
 	left:0px;
 	width:100%;
@@ -128,6 +127,7 @@ h3 {
 	line-height:100px;
 	text-align:center;
 	border-bottom:1px solid #000000;
+	z-index:100;
 }
 
 .slide_header_offset {
@@ -138,9 +138,10 @@ h3 {
 .bg_blue { background-color:#7e93af; }
 
 .slide_header_gradient {
-	height:50%;
+	height:50px;
 	background-color:#FFFFFF;
-	opacity:.2;
+	opacity:.15;
+	z-index:101;
 }
 
 .header_text {
@@ -159,6 +160,7 @@ h3 {
 	width:100px;
 	box-shadow:inset 1px 1px 3px #333;
 	background-color:#486a9a;
+	z-index:102;
 }
 
 .slide_header h1 {
@@ -171,7 +173,6 @@ h3 {
 }
 
 .page, .slide {
-	height:1024px;
 	width:768px;
 }
 

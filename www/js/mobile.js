@@ -5,26 +5,27 @@ $( document ).ready( function(){
 	
 	//slide next
 	$( ".next" )
+	
 		.click( function(){
 			
 			//do other shit
 			var el = $( this );
-			var to_show = el.attr( "show" );
 			var slide_num = el.attr( "slide_num" );
 			var slides = [ "about", "portfolio", "contact" ];
 			
+			//hide all slides
+			$.each( slides, function( i, slide_name ){
+				$( "#" + slide_name ).hide();
+			});
+			
 			if( slide_num == "2" )
 			{
-				//hide all slides
-				$.each( slides, function( i, slide_name ){
-					$( "#" + slide_name ).hide();
-				}); 
+				//do slide
+				slideHorizontal( el, function( el ){});
 				
 				//show active slide
-				$( "#" + to_show ).show( 100, function(){
-					//do slide
-					slideHorizontal( el, function(){} );
-				});
+				var to_show = el.attr( "show" );
+				$( "#" + to_show ).show( 100 );
 			}
 			else
 			{

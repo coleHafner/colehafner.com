@@ -233,7 +233,7 @@ class Mobile extends Controller{
 												<div class="padder_10_bottom" style="font-weight:bold;">
 													' . $site['client'] . '
 												</div>
-												' . $site['desc_clean'] . '
+												' . stripslashes( $site['desc_clean'] ) . '
 											</div>
 										</div>
 									</div>
