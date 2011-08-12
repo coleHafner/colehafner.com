@@ -981,13 +981,14 @@ class Common {
 				'img' => 'bts', 
 				'client' => "Bottom Time Scuba", 
 				'type' => "Business", 
-				'link' => 'http://bottomtimescuba.org', 
+				'link' => FALSE, 
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in CMS" ), 
 				'desc' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. ",
 				'desc_clean' => "This is my first site. It was a fun little project for a local scuba shop. It was all done in procedural PHP. I added a custom CMS for the client. ",
 				'featured' => FALSE 
 			),
 			
+			/*
 			array( 
 				'img' => 'mdp', 
 				'client' => "Madness Entertainment", 
@@ -998,6 +999,7 @@ class Common {
 				'desc_clean' => "This project was for a friend\'s production studio. It integrates with Google\'s YouTube API, so they can showcase their videos via their youTube account.The client is in the process of switching hosts. It will be online soon.",
 				'featured' => FALSE 
 			),
+			*/
 			
 			array( 
 				'img' => 'pbr', 
@@ -1005,9 +1007,9 @@ class Common {
 				'type' => "Portfolio", 
 				'link' => FALSE, 
 				'features' => array( "Google Photo API Integration", "Custom Framework", "Built in CMS" ),
-				'desc' => "This site is still in production. It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service.<div class=\"padder_5_top\">Since this site is still under development.</div>",
-				'desc_clean' => "This site is still in production. It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service. Since this site is still under development.",
-				'featured' => TRUE 
+				'desc' => "This is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service.<div class=\"padder_5_top\">It is still under development.</div>",
+				'desc_clean' => "It is a photography site made for my friend. It integrates with Google\'s Picasa API and allows content management from Google\'s Picasa service. It is still under development.",
+				'featured' => FALSE 
 			),
 			
 			array( 
@@ -1040,6 +1042,17 @@ class Common {
 				'features' => array( "Cross Browser Compliant", "Custom Framework", "Built in Permissions System" ),
 				'desc' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike.<div class=\"padder_5_top\">I have plans to release this framework under the GLP license. It will be soon be available.</div>",
 				'desc_clean' => "This is the UI for my custom PHP framework. It provides an administration interface for developers and clients alike. I have plans to release this framework under the GLP license. It will be soon be available.",
+				'featured' => TRUE
+			),
+			
+			array( 
+				'img' => 'nfv', 
+				'client' => "Nifty Photo Viewer", 
+				'type' => "Portfolio", 
+				'link' => FALSE, 
+				'features' => array( "Google Picasa API Integration", "Only two files", "All javascript goodness" ),
+				'desc' => "This is a fun a little project that utilizes Google's Picasa API. It plugs into and makes searchable the entire communities photo library.",
+				'desc_clean' => "This is a fun a little project that utilizes Google's Picasa API. It plugs into and makes searchable the entire communities photo library.",
 				'featured' => TRUE
 			)
 		);

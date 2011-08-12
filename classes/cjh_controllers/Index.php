@@ -411,19 +411,18 @@ class Index extends Controller{
 																				' . stripslashes( $site['desc'] ) . '
 																			</div>
 																		</div>
-																		
-																		<div class="port_launch_site">
-																		';
-					if( $site['link'] !== FALSE )
-					{
-						$html .= '
-																			<a href="' . $site['link'] . '" target="_blank">Launch Site&nbsp;&gt;&nbsp;&gt;</a>
-																			';
-					}
-					
+																	</div>
+																	
+																	<div class="port_launch_site">
+																	';
+				if( $site['link'] !== FALSE )
+				{
 					$html .= '
-																		</div>
-																		
+																		<a href="' . $site['link'] . '" target="_blank">Launch Site&nbsp;&gt;&nbsp;&gt;</a>
+																		';
+				}
+				
+				$html .= '
 																	</div>
 																</div>
 															</td>
