@@ -1049,10 +1049,10 @@ class Common {
 				'img' => 'nfv', 
 				'client' => "Nifty Photo Viewer", 
 				'type' => "Portfolio", 
-				'link' => FALSE, 
-				'features' => array( "Google Picasa API Integration", "Only two files", "All javascript goodness" ),
-				'desc' => "This is a fun a little project that utilizes Google's Picasa API. It plugs into and makes searchable the entire communities photo library.",
-				'desc_clean' => "This is a fun a little project that utilizes Google's Picasa API. It plugs into and makes searchable the entire communities photo library.",
+				'link' => 'http://judgemybeer.com', 
+				'features' => array( "Google Picasa API Integration", "Cross Browser Compliant", "No server side scripting required!" ),
+				'desc' => "This is a fun a little project that utilizes Google's Picasa API. The search feature searches all public photos on Google's Picasa photo service. You can also view a user's album and album sets.",
+				'desc_clean' => "This is a fun a little project that utilizes Google's Picasa API. The search feature searches all public photos on Google's Picasa photo service. You can also view a user's album and album sets.",
 				'featured' => TRUE
 			)
 		);
