@@ -6,11 +6,11 @@ $( document ).ready( function(){
 	//slide next
 	$( ".next" )
 	
-		.click( function(){
+		.click( function( event ){
 			
 			//do other shit
 			var el = $( this );
-			var slide_num = el.attr( "slide_num" );
+			var slide_num = parseInt( el.attr( "slide_num" ) );
 			var slides = [ "about", "portfolio", "contact" ];
 			
 			//hide all slides
@@ -18,7 +18,7 @@ $( document ).ready( function(){
 				$( "#" + slide_name ).hide();
 			});
 			
-			if( slide_num == "2" )
+			if( slide_num == 2 )
 			{
 				//do slide
 				slideHorizontal( el, function( el ){});
@@ -37,29 +37,20 @@ $( document ).ready( function(){
 		.mouseenter( function(){
 			
 			//show pointer
-			$( this )
-				.css( "cursor", "pointer" )
-				.addClass( "mobile_row_hover" );
+			$( this ).addClass( "mobile_row_hover" );
 			
 		})
 		
 		.mouseleave( function(){ 
+		
 			$( this ).removeClass( "mobile_row_hover" ); 
-		});
-	
-	$( ".mobile_row" )
-		.click( function(){
-			
-			if( hasAttr( $( this ), "go_to" ) ) 
-			{
-				window.open( $( this ).attr( "go_to" ), "_blank" );
-			}
+
 		});
 		
 });
 
 function slideHorizontal( el, callback )
-{
+{	
 	//vars
 	var requested_slide = parseInt( $( el ).attr( "slide_num" ) );
 	var max_slides = parseInt( $( "#max_slides" ).attr( "value" ) );

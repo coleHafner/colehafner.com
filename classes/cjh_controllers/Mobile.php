@@ -146,7 +146,7 @@ class Mobile extends Controller{
 									<div class="prev_arrow bg_blue next" slide_num="1" show="">
 										<div style="position:relative;height:100%;width:100%;">
 											<div class="slide_header_gradient"></div>
-											<span class="prev_text">Home</span>
+											<span class="prev_text">&lt;&lt;&nbsp;Back</span>
 										</div>
 									</div>
 									
@@ -207,11 +207,11 @@ class Mobile extends Controller{
 						$row_vars = array(  
 							'line_height' => FALSE, 
 							'type' => "list-module-row",
-							'item_count' => 2
+							'item_count' => 2,
 						);
 						
 						$sites = Common::getPortfolioEntries();
-						$top_vars = array_merge( $row_vars,  array( 'i' => 0 ) );
+						$top_vars = array_merge( $row_vars,  array( 'i' => 0, 'hover_enabled' => FALSE ) );
 						$bottom_vars = array_merge( $row_vars,  array( 'i' => 1, 'hover_enabled' => FALSE ) );
 						
 						$row_classes_top = $this->getHtml( "get-css", $top_vars );
@@ -219,15 +219,27 @@ class Mobile extends Controller{
 						
 						foreach( $sites as $i => $site )
 						{
-							$go_to = ( $site['link'] !== FALSE ) ? ' go_to="' . $site['link'] . '"' : '';
+							$go_to_open = ( $site['link'] !== FALSE ) ? '<a href="' . $site['link'] . '" target="_blank">' : '';
+							$go_to_close = ( $site['link'] !== FALSE ) ? '</a>' : '';
+							$go_to_message = ( $site['link'] !== FALSE ) ? 'Tap to View' : '';
 							
 							$html .= '
 									<div class="' . $module_classes['html'] . '" style="margin-bottom:20px;">
-										<div class="' . $row_classes_top['html'] . '"' . $go_to . '>
-											<div class="padder_15"  style="text-align:left;">
-												<img src="/images/site_' . $site['img'] . '_mid.jpg" />
+										
+										' . $go_to_open . '
+											<div class="' . $row_classes_top['html'] . '">
+												<div class="padder_15"  style="text-align:left;">
+													<div style="position:relative;float:left;">
+														<img src="/images/site_' . $site['img'] . '_mid.jpg" />
+													</div>
+													<div style="position:absolute;top:45%;right:25%;">
+														' . $go_to_message . '
+													</div>
+													<div style="clear:both;">&nbsp;</div>
+												</div>
 											</div>
-										</div>
+										' . $go_to_close . '
+										
 										<div class="' . $row_classes_bottom['html'] . '">
 											<div class="padder_10">
 												<div class="padder_10_bottom" style="font-weight:bold;">
@@ -242,6 +254,41 @@ class Mobile extends Controller{
 						break;
 						
 					case "contact":
+						$ab_art = Article::getArticleFromTags( "index", "contact_blurb" );
+						
+						$a_vars = array( 
+							'paragraphs' => $ab_art[0]->splitBody(), 
+							'open_tag' => '<div class="default_line_height" style="margin-top:10px;">',
+							'close_tag' => '</div>' 
+						);
+						
+						$p_text = Article::getHtml( "pretty-article", $a_vars );
+						
+						$html .= '
+								<table style="margin-bottom:20px;">
+									<tr>
+										<td>
+											<div class="logo_holder box_shadow">
+												<img src="/images/logo_mobileTransparent.png" />
+											</div>
+										</td>
+										<td>
+											<div class="padder_10_left">
+												<h1 style="color:#000000;">Cole Hafner</h1>
+											</div>
+										</td>
+									</tr>
+								</table>
+								
+								<div class="' . $module_classes['html'] . '">
+									<div class="padder_10_right padder_10_bottom padder_10_left">
+										<div class="padder_10_top">
+											<a href="mailto:colehafner@gmail.com?subject=Mobile%20Contact">Email me.</a>
+										</div>
+										' . str_replace( array( '<b>', '</b>' ), array( '', '' ), $p_text['html'] ) . '
+									</div>
+								</div>
+								';
 						break;
 				}
 				
