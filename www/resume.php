@@ -11,11 +11,11 @@ $data = array(
 	'professional_summary' => array(
 		'title' => 'Web Applications Developer',
 		'items' => array(
-			'Expert skills in a plethora of web technologies including PHP, HTML, CSS, Javascript, and jQuery.',
-			'Extremely organized with great work ethic and the ability to behave in a professional manner and stay calm under tight project deadlines.',
-			'Experience with MVC methods and popular frameworks including fuelphp and wordpress.',
+			'Expert skills in a multitude of web technologies including PHP, HTML, CSS, Javascript, and jQuery.',
+			'Extremely organized with a great work ethic and the ability to behave in a professional manner and stay calm under tight project deadlines.',
+			'Experience with MVC methods and popular frameworks including Fuel and Wordpress.',
 			'Highly motivated with excellent verbal and written communication skills.',
-			'Familiar with many database technologies including MySQL, Postgres, and Oracle',
+			'Familiar with many database technologies including MySQL, Postgres, and Oracle.',
 			'Well versed in object oriented programming.'
 		)
 	),
@@ -27,10 +27,11 @@ $data = array(
 			'duration' => '07/2008 - present', 
 			'desc' => 'I am responsible for designing projects from the ground up. I work with a small team of developers to determine the project\'s every aspect from the database schema to the interface design and everything between.',
 			'bullets' => array( 
-				'Designed projects from the ground up.', 
-				'Responsible for database schema design and initial data population.', 
-				'Created functional and clean user interfaces.',
-				'Responsible for optimizing/enhancing existing projects.'
+				'Responsible for designing web applications from the ground up.', 
+				'Create and maintain complex relational databases.', 
+				'Build clean and intuitive user experiences.',
+				'Optimize and enhance existing web applications.',
+				'Work with a small team of developers and designers to meet strict deadlines.'
 			)
 		),
 		
@@ -40,21 +41,21 @@ $data = array(
 			'duration' => '06/2008 - present', 
 			'desc' => ' This is my \'on the side\' freelance operation. I am responsible for talking to my clients, getting a feel for their vision, and managing their expectations. I design the UI comps, present them, and, after an agreement is reached, I get to work. All my projects have been built on Half Nerd CMS ( my custom PHP framework ). I always design my interfaces with simplicity in mind. Often times, I build in a custom CMS so my clients can keep the site up to date long after I\'ve left the project. ',
 			'bullets' => array(
-				'Responsible for managing client expectations.',
-				'Built my own custom framework for all projects.',
-				'Designed custom User Interfaces based on my client\'s vision.',
-				'All projects include a custom CMS.'
+				'Responsible for managing client\'s expectations.',
+				'All projects are built on my own custom framework and include a specialized content management system.',
+				'Design custom user interfaces based on each client\'s requirements.'
 			)
 		),
 		
 		array( 
 			'header' => 'Blackstone Audiobooks', 
-			'title' => 'Intern', 
+			'title' => 'Tech Department Intern', 
 			'duration' => '04/2008 - 06/2008', 
 			'desc' => ' I helped develop a web application solution to track Blackstone\'s hardware and software inventory. I also helped the system administrator maintain their local network.',	 
 			'bullets' => array(
-				'Helped the system administrator maintain their local network.',
-				'Developed a web application to track Blackstone\'s hardware inventory.'
+				'Helped the system administrator upgrade and maintain Blackstone\'s local network.',
+				'Developed a web application to track Blackstone\'s hardware inventory.',
+				
 			)
 		)
 	),
@@ -63,7 +64,7 @@ $data = array(
 		array(
 			'header' => 'Southern Oregon University',
 			'title' => 'Bachelor\'s Degree in Computer Science',
-			'desc' => 'Focus on the CS Multi-media track with a minor in business administration.',
+			'desc' => 'Focus on the CS multimedia track with a minor in business administration.',
 			'duration' => '09/2004 - 06/2008'
 		)
 	),
@@ -71,7 +72,8 @@ $data = array(
 	'honors_and_awards' => array(
 		array( 
 			'header' => 'Iron Web Master Website Design Contest Finalist.',
-			'desc' => 'In my senior year at SOU I entered a web design contest. It was a learning experience and a lot of fun.',
+			'desc' => 'In my senior year of college, I entered a web design contest. The contest had five rounds, each with a different theme. Each contestant had
+			a short amount of time in which to build a website matching the current round\'s theme. It was a great learning experience and a lot of fun.',
 			'duration' => '03/2008'
 		)
 	),
@@ -79,7 +81,8 @@ $data = array(
 	'community_service' => array(
 		array( 
 			'header' => 'YMCA Soccer Coach',
-			'desc' => 'My wife and I co-coached a group of Kindergarten aged children. As a coach, I helped teach the funamentals of teamwork and good sportsmanship. It was a rewarding experience.',
+			'desc' => 'My wife and I co-coached a group of Kindergarten-aged children. As a coach, I helped teach the fundamentals of teamwork and good sportsmanship. 
+			It was a very rewarding experience.',
 			'duration' => '06/2006 - 06/2007'
 		)
 	)
@@ -168,6 +171,10 @@ body{
 	border-bottom: 1px solid #ccc;
 }
 
+.name {
+	font-size: 14px;
+}
+
 .section_header {
 	position: relative;
 	background-color: #ccc;
@@ -204,15 +211,19 @@ body{
 			<div class="header">
 				<div class="content_padder" id="header_inner">
 				
-					<span class="font_accent">
+					<span class="font_accent name">
 						<?php echo $personal['name']; ?>
 					</span> <br/>
 					
-					<?php echo $personal['phone']; ?><br/>
+					<?php echo $personal['phone']; ?> 
+					
+					<span class="font_accent">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 					
 					<a href="mailto:<?php echo $personal['email']; ?>?subject=Resume">
 						<?php echo $personal['email']; ?>
-					</a> | 
+					</a> 
+					
+					<span class="font_accent">&nbsp;&nbsp;|&nbsp;&nbsp;</span> 
 					
 					<a href="<?php echo $personal['portfolio_site']; ?>" target="_blank">
 						<?php echo $personal['portfolio_site']; ?>
@@ -254,11 +265,11 @@ foreach( $data as $header_title => $item )
 			$header = $sub_item['header'];
 			$desc = $sub_item['desc'];
 			$duration = $sub_item['duration'];
-			$title = array_key_exists( 'title', $sub_item ) ? ' - ' .  $sub_item['title'] : '';
+			$title = array_key_exists( 'title', $sub_item ) ? ' - ' .  $sub_item['title'] : false;
 ?>
 						<div class="content_item">
 							<div class="font_accent">
-								<div class="f_left"><?php echo $header;?> <span style="font-style:italic;font-weight:normal;"><?php echo $title; ?></span></div>
+								<div class="f_left"><?php echo $header; echo ( $title != false ) ? '<span style="font-style:italic;font-weight:normal;">' .  $title . '</span>' : ''; ?></div>
 								<div class="f_right"><?php echo $duration; ?></div>
 								<div class="clear"></div>
 							</div>
