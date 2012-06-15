@@ -12,8 +12,8 @@ $data = array(
 		'title' => 'Web Applications Developer',
 		'items' => array(
 			'Expert skills in a multitude of web technologies including PHP, HTML, CSS, Javascript, and jQuery.',
-			'Extremely organized with a great work ethic and the ability to behave in a professional manner and stay calm under tight project deadlines.',
-			'Experience with MVC methods and popular frameworks including Fuel and Wordpress.',
+			'Extremely organized with a great work ethic and the ability to behave in a professional manner.',
+			'Experience with MVC methods and popular frameworks including Cake and Code Igniter.',
 			'Highly motivated with excellent verbal and written communication skills.',
 			'Familiar with many database technologies including MySQL, Postgres, and Oracle.',
 			'Well versed in object oriented programming.'
@@ -21,10 +21,24 @@ $data = array(
 	),
 	
 	'experience' => array(
+	    
+	    array( 
+			'header' => 'Manifest Web Design', 
+			'title' => 'Web Applications Developer', 
+			'duration' => '10/2011 - present', 
+			'desc' => 'Tech lead and manager for various projects',
+			'bullets' => array( 
+				'Responsible for coordinating developer efforts to hit agressive deadlines.', 
+				'Create technical specifications to deliver to clients.', 
+				'Work with my team to develop secure web applications.',
+				'Review developer submissions with team to ensure clean, maintainable code.',
+				'Work directly with end users to resolve issues.'
+			)
+		),
 		array( 
 			'header' => 'Steelhead Advertising', 
 			'title' => 'Web Applications Developer', 
-			'duration' => '07/2008 - present', 
+			'duration' => '07/2008 - 10/2011', 
 			'desc' => 'I am responsible for designing projects from the ground up. I work with a small team of developers to determine the project\'s every aspect from the database schema to the interface design and everything between.',
 			'bullets' => array( 
 				'Responsible for designing web applications from the ground up.', 
