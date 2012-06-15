@@ -11,12 +11,13 @@ $data = array(
 	'professional_summary' => array(
 		'title' => 'Web Applications Developer',
 		'items' => array(
-			'Expert skills in a multitude of web technologies including PHP, HTML, CSS, Javascript, and jQuery.',
+			'Well versed in many web technologies including PHP, HTML, CSS, Javascript, and jQuery.',
 			'Extremely organized with a great work ethic and the ability to behave in a professional manner.',
 			'Experience with MVC methods and popular frameworks including Cake and Code Igniter.',
 			'Highly motivated with excellent verbal and written communication skills.',
-			'Familiar with many database technologies including MySQL, Postgres, and Oracle.',
-			'Well versed in object oriented programming.'
+			'Comfortable with basic system administration tasks in a Linux/Unix environments.',
+			'Proficient at writing complex and efficient query statements.',
+			'Experienced in object oriented programming.'
 		)
 	),
 	
@@ -24,20 +25,20 @@ $data = array(
 	    
 	    array( 
 			'header' => 'Manifest Web Design', 
-			'title' => 'Web Applications Developer', 
+			'title' => 'Beaverton, OR - Web Applications Developer', 
 			'duration' => '10/2011 - present', 
 			'desc' => 'Tech lead and manager for various projects',
 			'bullets' => array( 
 				'Responsible for coordinating developer efforts to hit agressive deadlines.', 
 				'Create technical specifications to deliver to clients.', 
 				'Work with my team to develop secure web applications.',
-				'Review developer submissions with team to ensure clean, maintainable code.',
+				'Review developer submissions to ensure clean, maintainable code.',
 				'Work directly with end users to resolve issues.'
 			)
 		),
 		array( 
 			'header' => 'Steelhead Advertising', 
-			'title' => 'Web Applications Developer', 
+			'title' => 'Ashland, OR - Web Applications Developer', 
 			'duration' => '07/2008 - 10/2011', 
 			'desc' => 'I am responsible for designing projects from the ground up. I work with a small team of developers to determine the project\'s every aspect from the database schema to the interface design and everything between.',
 			'bullets' => array( 
@@ -48,10 +49,10 @@ $data = array(
 				'Work with a small team of developers and designers to meet strict deadlines.'
 			)
 		),
-		
+		/*
 		array( 
 			'header' => 'Cole Hafner Freelance Web Designs', 
-			'title' => 'Developer, Designer, Database Architect, Account Executive', 
+			'title' => 'CEO', 
 			'duration' => '06/2008 - present', 
 			'desc' => ' This is my \'on the side\' freelance operation. I am responsible for talking to my clients, getting a feel for their vision, and managing their expectations. I design the UI comps, present them, and, after an agreement is reached, I get to work. All my projects have been built on Half Nerd CMS ( my custom PHP framework ). I always design my interfaces with simplicity in mind. Often times, I build in a custom CMS so my clients can keep the site up to date long after I\'ve left the project. ',
 			'bullets' => array(
@@ -60,7 +61,7 @@ $data = array(
 				'Design custom user interfaces based on each client\'s requirements.'
 			)
 		),
-		
+		*/
 		array( 
 			'header' => 'Blackstone Audiobooks', 
 			'title' => 'Tech Department Intern', 
@@ -83,22 +84,18 @@ $data = array(
 		)
 	),
 	
-	'honors_and_awards' => array(
+	'Hobbies and Interests' => array(
 		array( 
-			'header' => 'Iron Web Master Website Design Contest Finalist.',
-			'desc' => 'In my senior year of college, I entered a web design contest. The contest had five rounds, each with a different theme. Each contestant had
-			a short amount of time in which to build a website matching the current round\'s theme. It was a great learning experience and a lot of fun.',
-			'duration' => '03/2008'
+			'header' => '',
+			'desc' => 'Hiking with my dog, building computers, scuba diving, jogging, watching basketball, and cooking.',
+			'duration' => ''
 		)
 	),
 	
-	'community_service' => array(
+	'References' => array(
 		array( 
-			'header' => 'YMCA Soccer Coach',
-			'desc' => 'My wife and I co-coached a group of Kindergarten-aged children. As a coach, I helped teach the fundamentals of teamwork and good sportsmanship. 
-			It was a very rewarding experience.',
-			'duration' => '06/2006 - 06/2007'
-		)
+			'Available upon request.' 
+		) 
 	)
 );
 ?>
@@ -276,6 +273,18 @@ foreach( $data as $header_title => $item )
 		//loop through items in section
 		foreach( $item as $sub_item )
 		{
+			if($header_title == 'References') {
+				echo array_shift($sub_item);
+?>
+
+					</div><!--end content padder-->
+					
+				</div><!--end section offset-->		
+<?php
+				continue;
+				
+			}
+
 			$header = $sub_item['header'];
 			$desc = $sub_item['desc'];
 			$duration = $sub_item['duration'];
