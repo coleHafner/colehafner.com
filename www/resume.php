@@ -9,16 +9,7 @@ $personal = array(
 
 $data = array(
 	'professional_summary' => array(
-		'title' => 'Web Applications Developer',
-		'items' => array(
-			'Well versed in many web technologies including PHP, HTML, CSS, Javascript, and jQuery.',
-			'Extremely organized with a great work ethic and the ability to behave in a professional manner.',
-			'Experience with MVC methods and popular frameworks including Cake and Code Igniter.',
-			'Highly motivated with excellent verbal and written communication skills.',
-			'Comfortable with basic system administration tasks in a Linux/Unix environments.',
-			'Proficient at writing complex and efficient query statements.',
-			'Experienced in object oriented programming.'
-		)
+		'Cole Hafner is a web applications developer working in the Portland area. He primarily works with the LAMP stack. Cole takes pride in his work. He strives to write clean, maintainable, and testable code. While being well versed with HTML and CSS, he has also worked with javascript, jQuery, and, most recently, Angular. On the system admin side, he is comfortable with *nix command line and version control systems such as git. In addition, Cole is proficient with the wire-framing tool Balsamiq and can efficiently write detailed specs. He communicates well with co-workers and clients alike.'
 	),
 	
 	'experience' => array(
@@ -29,9 +20,8 @@ $data = array(
 			'duration' => '10/2011 - present', 
 			'desc' => 'Tech lead and manager for various projects',
 			'bullets' => array( 
-				'Responsible for coordinating developer efforts to hit agressive deadlines.', 
 				'Create technical specifications to deliver to clients.', 
-				'Work with my team to develop secure web applications.',
+				'Collaborate with team to hit deadlines',
 				'Review developer submissions to ensure clean, maintainable code.',
 				'Work directly with end users to resolve issues.'
 			)
@@ -64,12 +54,12 @@ $data = array(
 		*/
 		array( 
 			'header' => 'Blackstone Audiobooks', 
-			'title' => 'Tech Department Intern', 
+			'title' => 'Ashland, OR - Tech Department Intern', 
 			'duration' => '04/2008 - 06/2008', 
 			'desc' => ' I helped develop a web application solution to track Blackstone\'s hardware and software inventory. I also helped the system administrator maintain their local network.',	 
 			'bullets' => array(
-				'Helped the system administrator upgrade and maintain Blackstone\'s local network.',
-				'Developed a web application to track Blackstone\'s hardware inventory.',
+				'Help the system administrator upgrade and maintain the local network.',
+				'Develop a web application to track hardware inventory.',
 				
 			)
 		)
@@ -78,13 +68,13 @@ $data = array(
 	'education' => array(
 		array(
 			'header' => 'Southern Oregon University',
-			'title' => 'Bachelor\'s Degree in Computer Science',
-			'desc' => 'Focus on the CS multimedia track with a minor in business administration.',
+			'title' => 'B.S., Computer Science',
+			'desc' => 'Emphasis in multimedia with a minor in business administration.',
 			'duration' => '09/2004 - 06/2008'
 		)
 	),
 	
-	'Hobbies and Interests' => array(
+	'Hobbies_and_Interests' => array(
 		array( 
 			'header' => '',
 			'desc' => 'Hiking with my dog, building computers, scuba diving, jogging, watching basketball, and cooking.',
@@ -114,7 +104,7 @@ body{
 	margin: 0;
 	background-color: #999;
 	font-family: arial;
-	font-size: 11px;
+	font-size: 12px;
 	line-height: 14px;
 }
 
@@ -131,7 +121,7 @@ body{
 
 .content_inner {
 	position: relative;
-	margin: 50px;
+	margin: 30px;
 	border: 1px solid #ccc;
 }
 
@@ -156,7 +146,7 @@ body{
 	margin-right: auto;
 	margin-bottom: 30px;
 	margin-left: auto;
-	width: 800px;
+	width: 1024px;
 	border: 1px solid #000;
 	background-color: #FFF;
 	-moz-box-shadow: rgba( 0, 0, 0, .5 ) 5px 5px 10px;
@@ -190,7 +180,7 @@ body{
 	position: relative;
 	background-color: #ccc;
 	text-align: left;
-	font-size: 12px !important;
+	font-size: 13px !important;
 }
 
 .section_offset {
@@ -207,6 +197,10 @@ body{
 
 .summary_list li{
 	padding-bottom: 10px;
+}
+
+p.professional-summary {
+	line-height:1.5em;
 }
 
 </style>
@@ -329,18 +323,8 @@ foreach( $data as $header_title => $item )
 	else
 	{
 ?>
-						<div class="font_accent"><?php echo $item['title']; ?></div>
+						<p class="professional-summary"><?php echo array_shift($item); ?></p>
 						
-						<ul class="summary_list">
-<?php
-		foreach( $item['items'] as $sub_item )
-		{
-?>
-							<li><?php echo $sub_item; ?></li>
-<?php	
-		}
-?>
-						</ul>
 		
 <?php
 	}//end else
